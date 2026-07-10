@@ -212,26 +212,18 @@ button:focus-visible,.chip:focus-visible,summary:focus-visible{outline:2.5px sol
 <nav class="tabs" aria-label="Report sections">
   <div class="wrap" role="tablist" id="tablist">
     <button role="tab" data-tab="summary" aria-selected="true">Summary</button>
-    <button role="tab" data-tab="water" aria-selected="false">The Water</button>
-    <button role="tab" data-tab="products" aria-selected="false">Product Plan</button>
+    <button role="tab" data-tab="plan" aria-selected="false">The Plan</button>
     <button role="tab" data-tab="drinking" aria-selected="false">Drinking Water</button>
-    <button role="tab" data-tab="house" aria-selected="false">House &amp; Fixtures</button>
-    <button role="tab" data-tab="protect" aria-selected="false">Protection &amp; Backup</button>
-    <button role="tab" data-tab="testing" aria-selected="false">Testing Plan</button>
-    <button role="tab" data-tab="follow" aria-selected="false">Follow-ups</button>
+    <button role="tab" data-tab="house" aria-selected="false">House &amp; Testing</button>
     <button role="tab" data-tab="evidence" aria-selected="false">Evidence</button>
   </div>
 </nav>
 
 <main class="wrap">
   <section class="tab on" id="tab-summary"></section>
-  <section class="tab" id="tab-water"></section>
-  <section class="tab" id="tab-products"></section>
+  <section class="tab" id="tab-plan"></section>
   <section class="tab" id="tab-drinking"></section>
   <section class="tab" id="tab-house"></section>
-  <section class="tab" id="tab-protect"></section>
-  <section class="tab" id="tab-testing"></section>
-  <section class="tab" id="tab-follow"></section>
   <section class="tab" id="tab-evidence"></section>
 </main>
 
@@ -310,128 +302,92 @@ function openEv(id){var e=EV[id];if(!e)return;var chk=EVCHK[id];
 function closeEv(){document.getElementById('evsheet').classList.remove('on');document.getElementById('evscrim').classList.remove('on')}
 document.getElementById('evscrim').onclick=closeEv;
 
-/* ===== v2 shared bits ===== */
+/* ============ v3 consolidated renderers - 5 tabs, lean, detail-in-drawers ============ */
 function es2(s){return esc(pscrub(s))}
-function labelPill(t){
-  var l=String(t||'').toLowerCase();
+function labelPill(t){var l=String(t||'').toLowerCase();
   if(/^buy now|^set up now/.test(l))return pill(t,'good');
   if(/^choose now/.test(l))return pill(t,'pine');
   if(/^wait/.test(l))return pill(t,'warn');
   if(/^do not buy|not supported/.test(l))return pill(t,'bad');
   if(/installer|plumber/.test(l))return pill(t,'info');
   if(/omission/.test(l))return pill(t,'na');
-  return pill(t,'na');
-}
+  return pill(t,'na');}
 function xref(label,tab){return '<a href="#'+tab+'" onclick="show(\''+tab+'\');return false" style="font-weight:600">'+esc(label)+' &#8594;</a>'}
 function winPill(w){return w==='ro'?pill('RO','good'):(w==='aql'?pill('Aqualuxe','pine'):pill('Tie','na'))}
 
-/* ===== summary: the canonical deck (also powers presentation mode) ===== */
+/* ===== SUMMARY: canonical deck (6 sections), also drives presentation mode ===== */
 function summaryDeck(){
   var d=(typeof DATA!=='undefined'&&DATA)?DATA:{}, v=d.v2||{};
   var S=[], h='';
 
-  /* 1 - EXECUTIVE RECOMMENDATION */
-  h = verdict('Buy the protection now; the drinking-water pick has changed to reverse osmosis',
-    'Since the walkthrough call, the drinking-water recommendation moves from the Multipure Aqualuxe carbon block to a <b>premium under-sink RO</b> - Michael clarified his RO concern was whole-house RO, not the drinking tap, and RO is the only option that also covers copper (the tub staining), sodium, nitrate and TDS before testing even happens. The rest of the design holds: whole-house catalytic carbon for chloramine and byproducts, a smart shutoff for the vacancy months, and a gravity filter for hurricane season. No whole-house RO, no whole-house PFAS media - PFAS and lead are drinking-and-cooking exposures, treated at the tap you drink from.','pine');
+  /* 1 - WHAT TO DO NOW */
+  h=verdict('Treat the drinking tap with reverse osmosis; protect the house; validate a short list by testing',
+    'Install a certified under-sink RO for drinking and cooking (it removes PFAS, lead, copper and the dissolved contaminants a carbon block cannot), whole-house catalytic carbon for chloramine and byproducts, and a smart shutoff for the vacancy months. No whole-house RO and no whole-house PFAS media - those are drinking-and-cooking exposures, treated at the tap you drink from.','pine');
   h+='<div class="cards4">'
-    + statCard({k:'Buy now',v:'Shutoff + sensors, gravity filter, 3 test kits',s:'no test results needed',cls:'good'})
-    + statCard({k:'Choose now, validate',v:'Under-sink RO + whole-house carbon',s:'ordered after the kits ship back',cls:''})
-    + statCard({k:'Wait for tests',v:'pH neutralizer, softener, corrosion control',s:'expected: none needed',cls:'warn'})
-    + statCard({k:'Do not buy',v:'Tub spout filter, whole-house RO, wellness gadgets',s:'wrong tools here',cls:'bad'})
+    + statCard({k:'Buy now',v:'Shutoff + sensors, gravity filter, test kits',s:'no results needed',cls:'good'})
+    + statCard({k:'Choose now, validate',v:'Under-sink RO + whole-house carbon',s:'order after the kits return',cls:''})
+    + statCard({k:'Test to decide',v:'pH neutralizer, softener',s:'expected: neither needed',cls:'warn'})
+    + statCard({k:'Do not buy',v:'Tub filter, whole-house RO, wellness gear',s:'wrong tools here',cls:'bad'})
     + '</div>';
-  h+='<p class="note">Everything above is re-checked against live certification registries the week of purchase - this report\'s certifications were verified July 2026.</p>';
+  h+='<p class="note">Certifications are re-checked against live registries the week of purchase; this report\'s were verified July 2026.</p>';
   S.push({eyebrow:'Executive recommendation',title:'What to do now',html:h});
 
-  /* 2 - THE WATER */
+  /* 2 - THE WATER IN 3 FACTS */
   h='<div class="cards3">'
-    +'<div class="card"><h4>PFOS: the one real exceedance</h4><p>EPA monitoring measured PFOS at 9.9 ppt on this supply - about 2.5x the 4 ppt federal MCL level. A monitoring result, not a violation (enforcement begins 2029-2031), but the single strongest reason for certified treatment at the drinking tap.</p></div>'
-    +'<div class="card"><h4>Chloramine + byproducts</h4><p>The City disinfects with chloramine (annual average 3.13 ppm). Its trihalomethane byproducts pass the federal limit but individual samples have reached ~103 ppb - the case for whole-house carbon at showers and baths.</p></div>'
-    +'<div class="card"><h4>Copper &amp; lead: the city passes; the house is the question</h4><p>The City\'s own 2024 tap sampling passes the Lead and Copper Rule comfortably. The blue-green tub staining points at this house\'s own plumbing and its months of vacancy - which testing pins down.</p></div>'
+    +'<div class="card"><h4>PFOS - the one real exceedance</h4><p>Measured at 9.9 ppt on this supply, ~2.5x the 4 ppt federal MCL level. A monitoring result, not a violation - but the strongest reason for certified treatment at the drinking tap.</p></div>'
+    +'<div class="card"><h4>Chloramine + byproducts</h4><p>The City disinfects with chloramine (avg 3.13 ppm); its trihalomethane byproducts pass the federal limit but individual samples reach ~103 ppb - the case for whole-house carbon.</p></div>'
+    +'<div class="card"><h4>The city passes; the house is the question</h4><p>Vero Beach\'s own tap sampling clears the Lead and Copper Rule. The blue-green tub staining is this home\'s own plumbing plus its months of vacancy - which testing pins down.</p></div>'
     +'</div>';
-  h+='<p class="note">Full contaminant detail, health-guideline comparisons and utility facts: '+xref('The Water','water')+'</p>';
+  h+='<p class="note">Full contaminant detail and the health-guideline comparison are in '+xref('Evidence','evidence')+'.</p>';
   S.push({eyebrow:'What we know',title:'The Vero Beach water, in three facts',html:h});
 
-  /* 3 - THE DRINKING-WATER DECISION */
+  /* 3 - THE PICK + PRICE DOESN'T BUY CLEANER */
   var dd=v.ddecision||{};
-  h=verdict(esc(dd.headline||'Recommended: premium under-sink RO'),es2(dd.verdict||''),'good');
+  h=verdict('Reverse osmosis at the drinking tap - and price does not buy cleaner water',
+    'Across ~20 RO systems, certified contaminant removal did not scale with price: a ~$450 unit leads on certified coverage, the $6,000-14,000 dealer systems are the same coverage class (you pay for service, not cleaner water), and the most expensive category - estate whole-house RO - carries no complete-system PFAS certification at all.','good');
   h+='<div class="cards2">'
-    +'<div class="card"><h4>The pick</h4><p><b>'+esc(dd.namedPick||'')+'</b></p><p>'+es2(dd.pickWhy||'')+'</p></div>'
-    +'<div class="card"><h4>What would switch it back</h4><p>'+es2(dd.switchCondition||'')+'</p></div>'
+    +'<div class="card"><h4>The pick</h4><p><b>Aquasana SmartFlow</b> (registry-verified: chloramine, PFOA/PFOS, lead, copper, nitrate, TDS) - run without its remineralizer. A tankless <b>Waterdrop G3P800</b> is the low-plastic alternative when whole-house carbon is installed.</p></div>'
+    +'<div class="card"><h4>Why RO over the simpler carbon block</h4><p>The Multipure Aqualuxe (stainless carbon block) is the strong runner-up, but only RO also removes copper, sodium, nitrate and TDS - closing every open question before testing returns.</p></div>'
     +'</div>';
-  h+='<p class="note">The full 19-factor Aqualuxe-vs-RO table, the plastics deep-dive, and the alternatives: '+xref('Drinking Water','drinking')+'</p>';
-  S.push({eyebrow:'The decision',title:'Aqualuxe vs reverse osmosis: RO wins this house',html:h});
+  h+='<p class="note">The head-to-head, the plastic tradeoff, and how we chose among ~20 systems: '+xref('Drinking Water','drinking')+'.</p>';
+  S.push({eyebrow:'The decision',title:'The drinking-water pick - and why more money did not win',html:h});
 
-  /* 4 - WILL TESTING CHANGE IT? */
-  var tc=v.testchange||{};
-  h=verdict('Will testing change the recommendation? No - it tunes the add-ons',esc(tc.verdict||''),'pine');
-  h+='<div class="cards2">'
-    +'<div class="card"><h4>Testing will NOT change</h4><ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:13.5px">'+(tc.wont||[]).slice(0,5).map(function(x){return '<li style="margin:5px 0">'+esc(x)+'</li>'}).join('')+'</ul></div>'
-    +'<div class="card"><h4>Testing COULD change</h4><ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:13.5px">'+(tc.could||[]).map(function(x){return '<li style="margin:5px 0"><b>'+esc(x.t)+'.</b> '+esc(x.d)+'</li>'}).join('')+'</ul></div>'
-    +'</div>';
-  S.push({eyebrow:'Testing',title:'We are not hiding behind the lab',html:h});
-
-  /* 5 - LISA'S TUB + MICHAEL'S SHOWER */
+  /* 4 - TUB STAIN + OUTDOOR SHOWER */
   var st=v.staining||{}, od=v.outdoor||{};
   h='<div class="cards2">'
-    +'<div class="card"><h4>The blue-green tub staining</h4><p>'+es2(st.tldr||'')+'</p><p style="margin-top:8px"><b>The fix starts free:</b> a post-vacancy flush routine, a $55 first-draw copper test at the stained tub, and a plumber\'s eye on the spout. A tub filter is not the answer - the copper dissolves into the water upstream of the tub. '+labelPill('Do not buy')+'</p></div>'
-    +'<div class="card"><h4>The outdoor shower</h4><p>'+es2(od.intro||'')+'</p><p style="margin-top:8px"><b>Preferred outcome:</b> the plumber confirms (or re-routes) it downstream of the whole-house carbon - then it needs no filter at all. '+labelPill('Plumber to inspect first')+'</p></div>'
+    +'<div class="card"><h4>The blue-green tub staining</h4><p>'+es2(st.tldr||'')+'</p><p style="margin-top:8px">The fix starts free: a post-vacancy flush routine and a $55 first-draw copper test - not a tub filter. '+labelPill('Do not buy')+'</p></div>'
+    +'<div class="card"><h4>The outdoor shower</h4><p>A plumbing question, not a product one. Best outcome: the plumber confirms (or re-routes) it downstream of the whole-house carbon - then it needs no filter. '+labelPill('Plumber to inspect first')+'</p></div>'
     +'</div>';
-  h+='<p class="note">The full staining differential, the copper decision rules, tub-filter reality check and shower-filter picks: '+xref('House & Fixtures','house')+'</p>';
-  S.push({eyebrow:'The new questions',title:'The tub stain and the outdoor shower, answered',html:h});
+  h+='<p class="note">Full staining diagnosis, decision rules, and shower path: '+xref('House & Testing','house')+'.</p>';
+  S.push({eyebrow:'The new questions',title:'The tub stain and the outdoor shower',html:h});
 
-  /* 6 - THE PRODUCT PLAN */
-  var ds=v.designs||[];
-  h='<div class="cards3">'+ds.map(function(D){
-    return '<div class="card"'+(D.id==='balanced'?' style="border-color:var(--pine3);box-shadow:0 0 0 2px var(--goodbg)"':'')+'>'
-      +(D.id==='balanced'?pill('Recommended','good'):pill(D.tag||'','na'))
-      +'<h4 style="margin-top:8px">'+esc(D.name)+'</h4>'
-      +'<p style="font-size:12.5px;color:var(--mut)">'+esc(D.cost||'')+'</p>'
-      +'<ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:12.5px">'+(D.items||[]).slice(0,4).map(function(it){return '<li style="margin:4px 0">'+es2(it.what)+'</li>'}).join('')+'</ul>'
-      +'</div>';
-  }).join('')+'</div>';
-  h+='<p class="note">'+esc(v.designNotes||'')+' Every line item with its buy-now label and certification class: '+xref('Product Plan','products')+'</p>';
-  S.push({eyebrow:'Product plan',title:'Three ways to build it - one recommended',html:h});
-
-  /* 7 - TESTING PLAN */
-  var tp=v.testplan||{};
-  h=verdict('Three houses, three boxes: '+esc((tp.best||{}).cost||'$788/house'),
-    es2(tp.intro||''),'pine');
-  h+='<div class="cards2">'
-    +'<div class="card"><h4>Best plan - per house</h4><ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:13px">'+((tp.best||{}).kits||[]).map(function(k){return '<li style="margin:4px 0"><b>'+esc(k.k)+'</b> ('+esc(k.price)+')</li>'}).join('')+'</ul><p style="font-size:12.5px;color:var(--mut);margin-top:6px">EPA-method PFAS, first-draw copper &amp; lead, full chemistry, bacteria.</p></div>'
-    +'<div class="card"><h4>Minimum plan - per house</h4><ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:13px">'+((tp.minimum||{}).kits||[]).map(function(k){return '<li style="margin:4px 0"><b>'+esc(k.k)+'</b> ('+esc(k.price)+')</li>'}).join('')+'</ul><p style="font-size:12.5px;color:var(--mut);margin-top:6px">'+esc((tp.minimum||{}).cost||'')+' - fine for the secondary houses.</p></div>'
-    +'</div>';
-  h+='<p class="note">Exact SKUs, collection protocol and the decision tree the results feed: '+xref('Testing Plan','testing')+'</p>';
-  S.push({eyebrow:'Testing plan',title:'What Sam orders this week',html:h});
-
-  /* 7b - HOW IT SEQUENCES + the fast track */
+  /* 5 - HOW IT SEQUENCES + fast track */
   var sq=v.sequence||{};
   var whenTitles=['This week','About two weeks later','Install &amp; commission'];
   h='<div class="cards3">'+(sq.phases||[]).map(function(P,i){
     return '<div class="card"'+(i===0?' style="border-color:var(--good)"':'')+'><h4>'+(whenTitles[i]||('Step '+(i+1)))+'</h4>'
       +'<p style="font-size:12px;color:var(--mut);margin:0 0 6px">'+esc(P.when)+'</p>'
-      +'<ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:12.5px">'+(P.items||[]).map(function(x){return '<li style="margin:4px 0">'+es2(x)+'</li>'}).join('')+'</ul></div>';
+      +'<ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:12.5px">'+(P.items||[]).slice(0,4).map(function(x){return '<li style="margin:4px 0">'+es2(x)+'</li>'}).join('')+'</ul></div>';
   }).join('')+'</div>';
-  h+='<p class="note"><b>Nothing about the RO or carbon <i>direction</i> waits on testing</b> - the lab confirms sizing and rules out add-ons, and it can flip the drinking pick to the simpler Aqualuxe only in one specific case. "Choose now" means commit the architecture today; the purchase order follows the results.</p>';
   if(sq.fastTrack)h+=verdict('In a hurry? Order the RO now - it is the safe bet',es2(sq.fastTrack),'pine');
   S.push({eyebrow:'How it sequences',title:'What happens when - and the fast track',html:h});
 
-  /* 8 - THE ASK */
+  /* 6 - THE ASK */
   h='<div class="cards2">'
     +'<div class="card" style="border-color:var(--good);box-shadow:0 0 0 2px var(--goodbg)"><h4>Decisions requested today</h4>'
     +'<ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:13.5px">'
-    +'<li style="margin:5px 0">Confirm the switch to under-sink RO as the drinking-water direction '+labelPill('Choose now, validate with testing')+'</li>'
-    +'<li style="margin:5px 0">Approve the three-house test-kit order '+pill(es2('Sam'),'info')+'</li>'
-    +'<li style="margin:5px 0">Green-light the smart shutoff + gravity filter purchases '+labelPill('Buy now')+'</li>'
-    +'<li style="margin:5px 0">Schedule the plumber walkthrough (pipes, outdoor shower path, install locations) '+pill(es2('Michael / property manager'),'info')+'</li>'
+    +'<li style="margin:5px 0">Confirm under-sink RO + whole-house carbon as the direction '+labelPill('Choose now, validate with testing')+'</li>'
+    +'<li style="margin:5px 0">Green-light the shutoff, sensors and gravity filter '+labelPill('Buy now')+'</li>'
+    +'<li style="margin:5px 0">Approve the test-kit order '+pill(es2('Sam'),'info')+' and the plumber walkthrough '+pill(es2('Michael'),'info')+'</li>'
     +'</ul></div>'
     +'<div class="card"><h4>Not being requested yet</h4>'
     +'<ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:13.5px">'
-    +'<li style="margin:5px 0">The RO and carbon purchase - after test results and the install quote</li>'
-    +'<li style="margin:5px 0">Any pH/softener/corrosion equipment - expected: none needed</li>'
+    +'<li style="margin:5px 0">The RO + carbon purchase - after results and the install quote</li>'
+    +'<li style="margin:5px 0">Any pH/softener/corrosion gear - expected: none needed</li>'
     +'<li style="margin:5px 0">Any repipe conversation - staining alone never justifies it</li>'
     +'</ul></div>'
     +'</div>';
-  h+='<p class="note">Open questions for Michael and Lisa, and the step-by-step follow-up list: '+xref('Follow-ups','follow')+'</p>';
+  h+='<p class="note">Open questions for Michael and Lisa and the full follow-up checklist are in '+xref('Evidence','evidence')+'.</p>';
   S.push({eyebrow:'The ask',title:'What we are asking for today',html:h});
 
   return S;
@@ -441,91 +397,33 @@ function renderSummary(root){
   var S=summaryDeck();
   var h='<div class="slide">'
     +'<p class="eyebrow">Updated after the July 2026 walkthrough call</p>'
-    +'<h2 class="h1s">The Bronner water advisory, revised</h2>'
-    +'<p class="sub">Shorter, and decisive: what to buy now, what waits for testing, and the one recommendation that changed. Read straight through, or <button class="present-launch" onclick="startPresent()">present it one section at a time &#9654;</button></p>'
+    +'<h2 class="h1s">The Bronner water advisory, in brief</h2>'
+    +'<p class="sub">What to buy now, what waits for testing, and the one recommendation that changed. Read straight through, or <button class="present-launch" onclick="startPresent()">present it one section at a time &#9654;</button></p>'
     +'</div>';
   h+=S.map(function(s){return '<div class="slide"><p class="eyebrow">'+esc(s.eyebrow)+'</p><h2 class="h1s">'+esc(s.title)+'</h2>'+s.html+'</div>'}).join('');
-  var mtg=((DATA.v2||{}).meeting||{});
-  if((mtg.newFacts||[]).length){
-    h+='<div class="slide">'+drawer('What changed since the last version - the '+mtg.newFacts.length+' new facts from the walkthrough call',
-      '<ul style="margin:4px 0 0 18px;padding:0">'+mtg.newFacts.map(function(f){return '<li style="margin:6px 0">'+es2(f)+'</li>'}).join('')+'</ul>')+'</div>';
-  }
   root.innerHTML=h;
 }
 
-/* ===== water: what we know about the Vero Beach water ===== */
-function renderWater(root){
-  var d=DATA, hf=d.healthFraming||{}, ut=d.utility||{};
+/* ===== THE PLAN: designs + protection + price-performance ===== */
+function renderPlan(root){
+  var d=DATA, v=d.v2||{}, ds=v.designs||[];
+  var P={};(d.products||[]).forEach(function(p){if(p&&p.id)P[p.id]=p});
   var h='';
-  h+=sect('The supply','What we know about the Vero Beach water',
-    'City of Vero Beach (PWSID '+esc(ut.pwsid||'FL3310206')+'), confirmed from the water bill. 21 shallow wells are lime-softened, six deeper Floridan wells feed it too (four through reverse osmosis), the streams are blended and disinfected with chloramine.');
-  if(hf.philosophy)h+=verdict('Compliant is not the same as clean',esc(hf.philosophy),'pine');
-  var rows=(hf.chart||{}).rows||[];
-  if(rows.length){
-    var hgBar=function(r){
-      var lbl=r.multLabel||(r.mult?r.mult+'x health guideline':'');
-      var pct=(r.mult&&r.mult>0)?Math.max(4,Math.min(100,Math.round((Math.log(r.mult)/Math.log(1000))*100))):100;
-      var cls=r.st==='concern'?'bad':(r.st==='caution'?'warn':(r.st==='good'?'good':'gold'));
-      return '<div class="bar '+cls+'"><div class="bl"><span><b>'+esc(r.name)+'</b> <span style="color:var(--mut);font-weight:400">'+esc(r.measured)+'</span></span><b>'+esc(lbl)+'</b></div><div class="bt"><div class="bf" style="width:'+pct+'%"></div></div></div>';
-    };
-    h+='<div style="margin:14px 0">'+rows.map(hgBar).join('')+'</div>';
-    if((hf.chart||{}).note)h+='<p class="note">'+esc(hf.chart.note)+'</p>';
-    var tblRows=rows.concat((hf.chart||{}).extra||[]);
-    h+=drawer('<b>The numbers behind the bars</b> - measured level, health guideline, and the federal limit',
-      '<div class="scrollx"><table class="dtx"><tr><th>Contaminant</th><th>Measured</th><th>Health guideline</th><th>Basis</th><th>Federal limit</th><th>Src</th></tr>'
-      +tblRows.map(function(r){return '<tr><td><b>'+esc(r.name)+'</b></td><td>'+esc(r.measured)+'</td><td>'+esc(r.guideline||'')+'</td><td>'+esc(r.basis||'')+'</td><td>'+esc(r.mcl||'')+'</td><td>'+(r.cite?evref(r.cite):'')+'</td></tr>'}).join('')
-      +'</table></div>');
-  }
-  h+=endSect();
 
-  h+=sect('Copper and lead','The city passes; the house is what we test',
-    'New for this revision: the City\'s own June 2024 Lead and Copper Rule tap sampling, pulled from the 2025 water quality report.');
-  h+='<div class="cards3">'
-    +statCard({k:'Copper, 90th percentile',v:'0.337 mg/L',s:'vs the 1.3 action level - zero site exceedances',cls:'good'})
-    +statCard({k:'Lead, 90th percentile',v:'5.0 ppb',s:'vs the 15 action level; one site hit 20 ppb individually',cls:'warn'})
-    +statCard({k:'Chloramine, 2025 average',v:'3.13 ppm',s:'range 1.0-4.0; fluoridation ended June 2025',cls:''})
-    +'</div>';
-  h+='<p>Read together: the water arriving at the meter is not corrosive by any regulatory measure, so the blue-green tub staining is a premise-plumbing story - stagnation, fixtures, and this house\'s own copper - not a city-water problem. That is why the fix starts with a flush routine and a first-draw test, not equipment. Full diagnosis: '+xref('House & Fixtures','house')+'</p>';
-  h+='<p class="note">The finished water\'s pH is not published in the CCR; lime softening typically leaves it alkaline, and the on-site pH strip in the test kit confirms it for $0 extra.</p>';
-  h+=endSect();
-
-  h+=sect('Exposure routes','Drink-it vs breathe-it vs bathe-in-it',
-    'The route matters more than the contaminant name - it is why treatment concentrates at the drinking tap.');
-  var xm=d.exposureMap||{}, routes=xm.routes||[];
-  if((xm.rows||[]).length){
-    var t='<div class="scrollx"><table class="dtx"><tr><th>Contaminant</th>';
-    routes.forEach(function(r){t+='<th>'+esc(r)+'</th>'});
-    t+='<th>What that means</th></tr>';
-    (xm.rows||[]).forEach(function(r){
-      t+='<tr><td><b>'+esc(r.c||'')+'</b></td>';
-      routes.forEach(function(_,j){var lv=(r.v||[])[j];t+='<td>'+(lv?heat(lv):'&#8212;')+'</td>'});
-      t+='<td style="color:var(--mut)">'+esc(r.note||'')+'</td></tr>';
-    });
-    t+='</table></div>';
-    h+=t;
-    h+='<p class="note">Takeaway: shower concern is justified only for volatile trihalomethanes (the whole-house carbon\'s job) - for PFAS, lead and metals the risk is what you drink.</p>';
-  }
-  var conts=d.contaminants||[];
-  if(conts.length){
-    h+=drawer('Full contaminant ledger ('+conts.length+' entries, utility + monitoring data)',
-      '<div class="scrollx"><table class="dtx"><tr><th>Contaminant</th><th>Level</th><th>Limit</th><th>Status</th><th>Note</th></tr>'
-      +conts.map(function(c){c=c||{};return '<tr><td><b>'+esc(c.name||'')+'</b></td><td>'+esc(c.level||'')+'</td><td>'+esc(c.limit||'')+'</td><td>'+esc(c.status||'')+'</td><td style="color:var(--mut)">'+esc(c.note||c.detail||'')+'</td></tr>'}).join('')
-      +'</table></div>');
-  }
-  h+=endSect();
-  root.innerHTML=h;
-}
-
-/* ===== products: the final product recommendation ===== */
-function renderProducts(root){
-  var v=DATA.v2||{}, ds=v.designs||[];
-  var h='';
-  h+=sect('Product plan','Three designs - one recommended, all honestly priced',
-    'Every line carries an action label so nothing hides behind "it depends": buy now, choose now and validate, wait for tests, or do not buy.');
-  h+='<p style="margin:0 0 10px">'+labelPill('Buy now')+' '+labelPill('Choose now, validate with testing')+' '+labelPill('Wait for test results')+' '+labelPill('Do not buy')+' '+labelPill('Installer to confirm')+' '+labelPill('Plumber to inspect')+'</p>';
+  /* 1 - recommended architecture */
+  h+=sect('The plan','One recommended design, honestly priced',
+    'Every line carries an action label, so nothing hides behind "it depends": buy now, choose now and validate, wait for tests, or do not buy.');
+  h+=flowRow([
+    {t:'City main',d:'municipal supply'},
+    {t:'Sediment + shutoff',d:'protection while vacant'},
+    {t:'Whole-house carbon',d:'chloramine + byproducts, house-wide',cls:'hero'},
+    {t:'House plumbing',d:'showers, tubs, laundry'},
+    {t:'Under-sink RO',d:'kitchen + fridge + ice',cls:'hero'}
+  ]);
+  h+='<p style="margin:10px 0">'+labelPill('Buy now')+' '+labelPill('Choose now, validate with testing')+' '+labelPill('Wait for test results')+' '+labelPill('Do not buy')+' '+labelPill('Plumber to inspect')+'</p>';
   ds.forEach(function(D){
     var open=(D.id==='balanced');
-    var body='<div class="scrollx"><table class="dtx"><tr><th>Component</th><th style="width:220px">Action</th></tr>'
+    var body='<div class="scrollx"><table class="dtx"><tr><th>Component</th><th style="width:200px">Action</th></tr>'
       +(D.items||[]).map(function(it){return '<tr><td>'+es2(it.what)+'</td><td>'+labelPill(it.label)+'</td></tr>'}).join('')
       +'</table></div>';
     var head=(D.id==='balanced'?pill('Recommended','good'):pill(D.tag||'','na'))+' <b>'+esc(D.name)+'</b> <span style="color:var(--mut);font-weight:400">&nbsp;'+esc(D.cost||'')+'</span>';
@@ -534,217 +432,31 @@ function renderProducts(root){
   h+='<p class="note">'+esc(v.designNotes||'')+'</p>';
   h+=endSect();
 
-  h+=sect('Certification honesty','Every recommended product, classified claim by claim',
-    'Five levels, applied ruthlessly: certified by exact model (registry-sighted) - independently tested - expected from the technology - manufacturer claimed - not supported.');
-  (v.certClass||[]).forEach(function(pc){
-    var body=(pc.levels||[]).map(function(L){
-      var cls=/^Certified by exact/.test(L[0])?'good':(/^Independently|^Certified per|^Performance/.test(L[0])?'info':(/^Expected/.test(L[0])?'warn':(/^Not covered|^Not supported/.test(L[0])?'bad':'na')));
-      return '<div class="kv"><b>'+pill(L[0],cls)+'</b><span>'+esc(L[1])+'</span></div>';
-    }).join('');
-    h+=drawer('<b>'+esc(pc.p)+'</b>',body);
-  });
-  h+='<p class="note">Rule applied throughout: a product is called "PFAS certified" only when the exact model\'s listing in the certifier\'s own database says so - "tested to", data sheets and marketing never upgrade to "certified". Certifications are re-verified the week of purchase.</p>';
+  /* 2 - price does not buy cleaner water */
+  h+=sect('Price vs performance','More expensive did not mean cleaner water',
+    'Across roughly 40 products - about 20 of them RO systems - certified contaminant removal did not scale with price.');
+  h+=verdict('Past a modest quality bar, money buys service and materials - not cleaner water',
+    'The leader on certified coverage is a ~$450 unit; the $6,000-14,000 dealer systems are the same coverage class (buying white-glove service and monitoring); a $450 countertop matched the big names on certified PFAS; and the most expensive category, estate whole-house RO, carries no complete-system PFAS certification at all.','good');
+  h+='<div class="cards4">'
+    +statCard({k:'RO systems compared',v:'~20',s:'plus a carbon-block alternative',cls:''})
+    +statCard({k:'Certified-coverage leader',v:'~$450',s:'not the priciest',cls:'good'})
+    +statCard({k:'Dealer white-glove',v:'$6-14k',s:'same coverage, more service',cls:'na'})
+    +statCard({k:'Estate whole-house RO',v:'No PFAS cert',s:'most expensive, least proven',cls:'bad'})
+    +'</div>';
+  h+='<p class="note">The full premium/estate/wellness benchmark is preserved in '+xref('Evidence','evidence')+'; the drinking-water pick and how we chose are in '+xref('Drinking Water','drinking')+'.</p>';
   h+=endSect();
 
-  h+=sect('The archive','Every product researched for this project',
-    'The complete research - all systems reviewed across drinking, whole-house, emergency and leak categories - preserved from the prior passes.');
-  var P=DATA.products||[];
-  if(P.length){
-    var arch='<div class="scrollx"><table class="dtx"><tr><th>Product</th><th>Category</th><th>Status</th><th>Certification</th><th>Note</th><th>Links</th></tr>'
-      +P.map(function(p){
-        p=p||{};
-        var st=String(p.status||'');
-        var cls=p.pick?'good':(/conditional/i.test(st)?'warn':(/avoid/i.test(st)?'bad':(/recommend|alternative/i.test(st)?'info':'na')));
-        var links=(p.officialPage?chip('Official',p.officialPage,'official'):'')+(p.srcUrl?chip('Listing',p.srcUrl,'ev'):'');
-        return '<tr><td><b>'+esc(p.name||'')+'</b></td><td>'+esc(p.cat||'')+'</td><td>'+pill(p.pick?'Prior pick':st||'Reviewed',cls)+'</td><td>'+esc(p.certified||p.stds||'')+'</td><td style="color:var(--mut)">'+esc(p.limitation||p.verdict||'')+'</td><td>'+links+'</td></tr>';
-      }).join('')
-      +'</table></div>';
-    h+=drawer('Open the product research archive ('+P.length+' systems reviewed)',arch);
-  }
-  h+='<p class="note">The premium/estate benchmark (does spending more buy cleaner water? - no) lives in the appendix: '+xref('Evidence','evidence')+'</p>';
-  h+=endSect();
-  root.innerHTML=h;
-}
-
-/* ===== drinking: Aqualuxe vs premium RO + will testing change it + plastics ===== */
-function renderDrinking(root){
-  var v=DATA.v2||{}, dd=v.ddecision||{}, dt=v.dtable||[], tc=v.testchange||{}, pl=v.plastics||{};
-  var h='';
-
-  h+=sect('The decision','Aqualuxe vs premium under-sink RO',
-    'The previous version leaned Aqualuxe. Michael\'s clarification on the call - that his RO objection was about whole-house RO, not the drinking tap - reopened the question, and the head-to-head below settles it.');
-  h+=verdict(esc(dd.headline||''),es2(dd.verdict||''),'good');
+  /* 3 - protection layer */
+  var ss=v.shutoffSimple||{}, pp=v.proonePos||{};
+  h+=sect('Protection & backup','The shutoff and the gravity filter - buy now',
+    'The two things that need no test results, and every vacant month without them is exposure.');
   h+='<div class="cards2">'
-    +'<div class="card" style="border-color:var(--pine3)"><h4>The pick: '+esc(dd.namedPick||'')+'</h4><p>'+es2(dd.pickWhy||'')+'</p>'+drawer('The two honest caveats','<p>'+es2(dd.pickCaveats||'')+'</p>')+'</div>'
-    +'<div class="card"><h4>Testing\'s role - and the switch-back condition</h4><p>'+es2(dd.testingRole||'')+'</p><p style="margin-top:8px">'+es2(dd.switchCondition||'')+'</p></div>'
+    +'<div class="card"><h4>Smart water shutoff '+labelPill('Buy now')+'</h4><p>Not a filter - it watches flow on the main, alerts and auto-closes on an abnormal pattern, and can be shut remotely. For a home that sits empty, the highest-value device in the plan (a ~$600 valve vs a five-figure flood).</p>'
+    +drawer('Where to place the point leak sensors','<div class="tag-row">'+(ss.sensors||[]).map(function(s){return pill(s,'info')}).join(' ')+'</div>')+'</div>'
+    +'<div class="card"><h4>ProOne gravity filter '+labelPill('Buy now')+'</h4><p>Hurricane-season resilience with no power or plumbing, and the right tool for the other houses where they cook and brew tea in volume. More defensible than Berkey (EPA stop-sale on Berkey\'s elements); stock spare elements at purchase.</p>'
+    +drawer('Where ProOne fits, in full','<ul style="margin:4px 0 0 18px;padding:0">'+(pp.points||[]).map(function(x){return '<li style="margin:6px 0">'+es2(x)+'</li>'}).join('')+'</ul>')+'</div>'
     +'</div>';
-  h+=drawer('Alternatives considered - dealer white-glove and the certification-breadth runner-up',
-    '<p><b>Dealer-managed.</b> '+es2(dd.altDealer||'')+'</p><p><b>Runner-up.</b> '+es2(dd.altRunnerUp||'')+'</p><p class="note">'+esc(dd.caveat||'')+'</p>');
-  h+=endSect();
-
-  h+=sect('Head to head','Nineteen decision factors, one at a time',
-    'RO wins where health and unknowns live; the Aqualuxe wins on simplicity and materials. The tally is honest - this was not a landslide, it is a decision.');
-  var tally={ro:0,aql:0,tie:0};
-  dt.forEach(function(r){tally[r.w]=(tally[r.w]||0)+1});
-  h+='<div class="cards3">'
-    +statCard({k:'RO wins',v:String(tally.ro),s:'incl. PFAS mechanism, copper, TDS, fridge/ice',cls:'good'})
-    +statCard({k:'Aqualuxe wins',v:String(tally.aql),s:'minerals, waste, plastics, simplicity',cls:''})
-    +statCard({k:'Ties',v:String(tally.tie),s:'both certified where it counts',cls:'na'})
-    +'</div>';
-  h+='<div class="scrollx"><table class="dtx"><tr><th>Decision factor</th><th>Multipure Aqualuxe</th><th>Premium under-sink RO</th><th>Winner</th><th>Why it matters</th></tr>'
-    +dt.map(function(r){return '<tr><td><b>'+esc(r.f)+'</b></td><td>'+esc(r.a)+'</td><td>'+esc(r.r)+'</td><td>'+winPill(r.w)+'</td><td style="color:var(--mut)">'+esc(r.why)+'</td></tr>'}).join('')
-    +'</table></div>';
-  if(dd.pfasCertNote)h+=verdict('One certification truth both sides share',esc(dd.pfasCertNote),'warn');
-  h+=endSect();
-
-  h+=sect('Testing','Will testing change this decision?',
-    'No hiding behind the lab: the recommendation is made now, and here is exactly what results could and could not do to it.');
-  h+=verdict('The short answer',esc(tc.verdict||''),'pine');
-  h+='<div class="cards2">'
-    +'<div class="card"><h4>What testing will probably NOT change</h4><ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:13.5px">'+(tc.wont||[]).map(function(x){return '<li style="margin:5px 0">'+esc(x)+'</li>'}).join('')+'</ul></div>'
-    +'<div class="card"><h4>What testing COULD change</h4>'+(tc.could||[]).map(function(x){return '<div class="kv"><b>'+esc(x.t)+'</b><span>'+esc(x.d)+'</span></div>'}).join('')+'</div>'
-    +'</div>';
-  h+=endSect();
-
-  /* the remineralizer - source and safety, and why we skip it */
-  var rm2=v.remin||{};
-  h+=sect('The remineralizer','What it adds, where it comes from - and why we skip it',esc(rm2.sub||''));
-  h+=verdict(esc(rm2.verdict||'')+' '+labelPill('Do not buy'),
-    'The added mineral is calcium only (not the magnesium the health literature weights most), from a media whose identity, source and grade Aquasana does not disclose - and for a normal diet, drinking water is not a meaningful mineral source.','warn');
-  h+='<ul style="margin:8px 0 0 18px;padding:0">'+(rm2.points||[]).map(function(p){return '<li style="margin:8px 0">'+es2(p)+'</li>'}).join('')+'</ul>';
-  h+=endSect();
-
-  /* how this system stores water - the plastic-contact reality for THIS product */
-  var stg=v.storage||{};
-  h+=sect('How this system stores water','The tank - and the plastic-contact reality',
-    'For a plastic-conscious buyer the storage tank is the RO design\'s weak point, so here it is stated precisely for this exact system - separating what Aquasana confirms from what it leaves unpublished.');
-  h+=verdict(esc(stg.verdict||''),'A carbon-block system like the Aqualuxe has no stored water at all; this is the clearest single tradeoff between the two picks.','warn');
-  h+='<div class="cards2">'
-    +'<div class="card"><h4>What Aquasana confirms</h4><ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:13.5px">'+(stg.confirmed||[]).map(function(x){return '<li style="margin:5px 0">'+esc(x)+'</li>'}).join('')+'</ul></div>'
-    +'<div class="card"><h4>What it does NOT publish</h4><p>'+es2(stg.gap||'')+'</p></div>'
-    +'</div>';
-  if(stg.seasonal)h+='<p class="note"><b>Seasonal home.</b> '+es2(stg.seasonal)+'</p>';
-  if(stg.tankless)h+=drawer('If plastic contact is the deciding factor - the carbon-block and tankless alternatives','<p>'+es2(stg.tankless)+'</p>');
-  h+=endSect();
-
-  h+=sect('Materials','Plastic contact, polypropylene, and RO storage materials',
-    'Michael asked for the deep dive - polypropylene, tank liners, bladders, leaching, microplastic shedding. Here it is, with the magnitudes attached.');
-  h+=verdict('The honest picture',esc(pl.tldr||''),'pine');
-  h+='<div class="cards2">'+(pl.findings||[]).slice(0,4).map(function(f){return '<div class="card"><h4>'+esc(f.t)+'</h4><p>'+esc(f.d)+'</p></div>'}).join('')+'</div>';
-  h+=drawer('The full findings ('+((pl.findings||[]).length)+' items, peer-reviewed sources)',
-    (pl.findings||[]).map(function(f){return '<div class="kv"><b>'+esc(f.t)+'</b><span>'+esc(f.d)+'</span></div>'}).join(''));
-  h+='<p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin:16px 0 6px">Low-plastic ranking of the real options</p>';
-  (pl.ranking||[]).forEach(function(r){h+='<div class="kv"><b>'+esc(r.n)+'</b><span>'+esc(r.d)+'</span></div>'});
-  if(pl.netCall)h+=verdict('How this weighs on the decision',esc(pl.netCall),'');
-  /* remineralization science (prior-pass research, now directly relevant to the RO pick) */
-  var RM=DATA.reminer||{}, A=DATA.aqualuxe||{};
-  var rmBody='';
-  var sci=RM.science||{};
-  if(sci.isRemineralizationNeeded)rmBody+='<p><b>Is remineralization a health need?</b> '+esc(sci.isRemineralizationNeeded)+'</p>'+(sci.whatResearchSays?'<p>'+esc(sci.whatResearchSays)+'</p>':'');
-  var bd=RM.builtinVsDiy||{};
-  if(bd.verdict)rmBody+=verdict('Built-in vs add-it-yourself',esc(bd.verdict)+(bd.why?' '+esc(bd.why):''),'');
-  if((RM.products||[]).length){
-    rmBody+='<div class="scrollx"><table class="dtx"><tr><th>RO system</th><th>Remineralizes?</th><th>How</th><th>Third-party tested?</th></tr>'
-      +(RM.products||[]).map(function(p){return '<tr><td><b>'+esc(p.name)+'</b></td><td>'+esc(p.remineralizes||'')+'</td><td>'+esc(p.how||'')+'</td><td>'+esc(p.thirdParty||'')+'</td></tr>'}).join('')+'</table></div>';
-  }
-  if(A.needsRemineralization)rmBody+='<p style="margin-top:8px"><b>Does this water even need it?</b> '+esc(A.needsRemineralization)+'</p>';
-  if(rmBody)h+=drawer('Remineralization: the deeper science on RO water and minerals (prior-pass research)',rmBody);
-  h+=endSect();
-  root.innerHTML=h;
-}
-
-/* ===== house: whole-house treatment + staining + outdoor shower ===== */
-function renderHouse(root){
-  var d=DATA, v=d.v2||{}, st=v.staining||{}, od=v.outdoor||{};
-  var h='';
-
-  /* 1 - whole house */
-  h+=sect('Whole-house treatment','Catalytic carbon: recommended, for comfort and byproducts',
-    'One treatment tank where the water enters, so every shower, bath, tub and washing machine gets dechloraminated water. A comfort-and-precaution layer - the health priority stays at the drinking tap.');
-  h+=flowRow([
-    {t:'City main',d:'municipal supply'},
-    {t:'Sediment pre-filter',d:'protects everything downstream',cls:'dim'},
-    {t:'Smart shutoff',d:'vacancy protection'},
-    {t:'Catalytic carbon',d:'chloramine + TTHMs, house-wide',cls:'hero'},
-    {t:'House plumbing',d:'showers, tubs, laundry, outdoor shower (verify path)'},
-    {t:'Drinking RO',d:'kitchen + fridge + ice',cls:'hero'}
-  ]);
-  h+='<p class="note">Irrigation and pool fill bypass BEFORE treatment so media is never spent on non-potable water. A softener joins only if hardness testing says so; a pH neutralizer only if pH/copper results say so - both currently expected NOT to trigger.</p>';
-  h+='<div class="cards2">'
-    +'<div class="card"><h4>Why this layer earns its place</h4><ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:13.5px">'
-    +'<li style="margin:4px 0">House-wide taste, odor and chloramine removal - every tap, not just the kitchen</li>'
-    +'<li style="margin:4px 0">Reduces trihalomethanes at the shower, where they volatilize (samples here have reached ~103 ppb)</li>'
-    +'<li style="margin:4px 0">Gentler water for skin, laundry and fixtures</li>'
-    +'<li style="margin:4px 0">Makes every fixture-filter question (tub, outdoor shower) mostly moot downstream</li></ul></div>'
-    +'<div class="card"><h4>Explicitly NOT recommended</h4><ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:13.5px">'
-    +'<li style="margin:4px 0">'+pill('No','bad')+' whole-house RO - wastewater, corrosion risk, stagnation, no health gain here</li>'
-    +'<li style="margin:4px 0">'+pill('No','bad')+' whole-house PFAS media as a default - PFAS is a drinking exposure, treated at the tap</li>'
-    +'<li style="margin:4px 0">'+pill('No','bad')+' UV - unless testing or site conditions ever justify it</li>'
-    +'<li style="margin:4px 0">'+pill('Wait','warn')+' softener and pH neutralizer - test-gated, expected unnecessary</li></ul></div>'
-    +'</div>';
-  var wh=(d.matrices||{}).wholehouse||{};
-  if(wh.cols&&wh.rows)h+=drawer('The whole-house decision matrix (from the prior pass - unchanged)',matrix(wh.cols,wh.rows,'Criterion')+((wh.conclusions||{}).why?'<p class="note">'+esc((wh.conclusions||{}).why)+'</p>':''));
-  h+='<p class="note">Hardware candidates (Kinetico dechlorinator, Pentair) and their certifications: '+xref('Product Plan','products')+'</p>';
-  h+=endSect();
-
-  /* 2 - staining */
-  h+=sect('The tub','Blue-green tub staining: what it means',es2(st.tldr||''));
-  h+='<div class="cards2"><div class="card"><h4>What is actually happening</h4><ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:13px">'
-    +(st.why||[]).map(function(w){return '<li style="margin:5px 0">'+es2(w)+'</li>'}).join('')+'</ul></div>'
-    +'<div class="card"><h4>The remedies ladder - cheapest first</h4>'+(st.remedies||[]).map(function(r,i){return '<div class="kv"><b>'+(i+1)+'. '+esc(r.t)+'</b><span>'+es2(r.d)+'</span></div>'}).join('')+'</div></div>';
-  h+='<p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin:16px 0 6px">The copper decision rules - what each test result means</p>';
-  h+='<div class="scrollx"><table class="dtx"><tr><th>If the tests show</th><th>Then</th></tr>'
-    +(st.rules||[]).map(function(r){return '<tr><td><b>'+esc(r["if"])+'</b></td><td>'+es2(r.then)+'</td></tr>'}).join('')
-    +'</table></div>';
-  h+='<p class="note">The samples that answer this: the $55 first-draw lead-and-copper kit at the stained tub\'s cold tap, plus pH/alkalinity/copper on the flushed city kit - both in the testing plan. '+xref('Testing Plan','testing')+'</p>';
-  var tf=st.tubFilter||{};
-  h+=verdict(esc(tf.headline||'Should Lisa buy a tub spout filter?')+' '+labelPill('Do not buy'),esc(tf.verdict||''),'bad');
-  h+=drawer('The tub-filter reality check, point by point',
-    '<ul style="margin:4px 0 0 18px;padding:0">'+(tf.points||[]).map(function(p){return '<li style="margin:6px 0">'+es2(p)+'</li>'}).join('')+'</ul>');
-  h+=endSect();
-
-  /* 3 - outdoor shower */
-  h+=sect('The outdoor shower',esc(od.headline||'The outdoor shower'),es2(od.intro||''));
-  h+=steps((od.path||[]).map(function(p,i){return {n:i+1,t:p.t,d:es2(p.d)}}));
-  h+=verdict('Filter truth, before anyone buys one',esc(od.filterTruth||''),'warn');
-  h+='<div class="cards3">'+(od.picks||[]).map(function(p){
-    return '<div class="card"><h4>'+esc(p.n)+'</h4><p style="margin:0 0 6px">'+labelPill(p.label||'')+'</p><p>'+es2(p.d)+'</p></div>';
-  }).join('')+'</div>';
-  h+='<p class="note">'+es2(od.note||'')+'</p>';
-  h+=endSect();
-  root.innerHTML=h;
-}
-
-/* ===== protect: smart shutoff + emergency ===== */
-function renderProtect(root){
-  var d=DATA, v=d.v2||{}, ss=v.shutoffSimple||{}, pp=v.proonePos||{};
-  var P={};(d.products||[]).forEach(function(p){if(p&&p.id)P[p.id]=p});
-  var h='';
-
-  h+=sect('Leak protection','The smart water shutoff, in plain terms',
-    'The highest-value device in the plan for a home that sits empty - and the simplest to explain.');
-  h+='<div class="cards2">'
-    +'<div class="card"><h4>What it is (and is not)</h4><ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:13.5px">'+(ss.what||[]).map(function(x){return '<li style="margin:5px 0">'+esc(x)+'</li>'}).join('')+'</ul></div>'
-    +'<div class="card"><h4>Pair it with point sensors at</h4><div class="tag-row" style="margin-top:8px">'+(ss.sensors||[]).map(function(s){return pill(s,'info')}).join(' ')+'</div>'
-    +'<p style="margin-top:10px;color:var(--mut);font-size:13px">Point sensors are $30-50 pucks that scream (and app-alert) at the first drop - the shutoff closes the main, the pucks tell you where it started.</p></div>'
-    +'</div>';
-  var l=(d.matrices||{}).leak||{}, lc=l.conclusions||{};
-  if(lc.why)h+=verdict('Recommended: '+esc((P.flo||{}).name?String(P.flo.name).replace(/\s*\(.*$/,''):'Flo by Moen'),esc(lc.why),'good');
-  if(l.cols&&l.rows)h+=drawer('Flo vs Phyn - the decision matrix',matrix(l.cols,l.rows,'Criterion',true));
-  h+='<p class="note">Labels: shutoff + sensors are '+labelPill('Buy now')+' - no test results needed, and every vacant month without them is exposure.</p>';
-  h+=endSect();
-
-  h+=sect('Emergency & supplemental','ProOne: the gravity filter, positioned honestly',
-    'For hurricane season, power outages, and the other houses - not a substitute for the kitchen system.');
-  h+='<div class="cards2">'
-    +'<div class="card"><h4>Where ProOne fits</h4><ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:13.5px">'+(pp.points||[]).map(function(x){return '<li style="margin:5px 0">'+es2(x)+'</li>'}).join('')+'</ul></div>'
-    +'<div class="card"><h4>Why not Berkey</h4><p>The obvious competitor carries an EPA stop-sale order on its filter elements (a federal pesticide-registration action, still in litigation) and no certified listing. ProOne carries an actual NSF/ANSI 42 certification plus independent PFAS/lead test reports - reports, not certified listings, which is why it is labeled a conditional pick and why elements get stocked up at purchase.</p>'
-    +'<p style="margin-top:8px">'+labelPill('Buy now')+' <span style="color:var(--mut);font-size:12.5px">one ProOne Big+ for this house; consider one per house - the rental especially, where they cook and brew tea in volume.</span></p></div>'
-    +'</div>';
-  var e=(d.matrices||{}).emergency||{};
-  if(e.cols&&e.rows)h+=drawer('The emergency-category matrix (from the prior pass)',matrix(e.cols,e.rows,'Criterion',true));
-
-  /* stored water calculator (preserved) */
+  /* stored-water calculator preserved */
   var ed=d.emergencyDefaults||{}, em=d.emergency||{};
   function dv(k,fb){var x=ed[k];return (typeof x==='number'&&isFinite(x)&&x>=0)?x:fb}
   var LBL='font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--mut)';
@@ -758,16 +470,8 @@ function renderProtect(root){
     +'<div><div style="'+LBL+'">Water to store</div><div id="em-total" style="font-family:var(--ser);font-size:30px;font-weight:600;line-height:1.1">&#8212;</div><div id="em-gpd" style="font-size:12.5px;color:var(--mut)"></div></div>'
     +'<div><div style="'+LBL+'">5-gallon jugs</div><div id="em-jugs" style="font-family:var(--ser);font-size:22px;font-weight:600">&#8212;</div></div>'
     +'<div><div style="'+LBL+'">Cases of 24 x 500 mL</div><div id="em-cases" style="font-family:var(--ser);font-size:22px;font-weight:600">&#8212;</div></div>'
-    +'</div><p class="note" style="margin-top:10px">Basis: CDC guidance of at least 1 gallon per person per day, two weeks recommended in hurricane-prone areas; infants 0.5 gal/day, pets 0.25 gal/day. '+evref('E28')+'</p>'
-    +(em.veroNote?'<p class="note">'+es2(em.veroNote)+'</p>':''));
-
-  /* storm playbook + seasonal ops (preserved) */
-  var se=d.seasonal||{};
-  function ulist(arr){return '<ul style="margin:6px 0 2px 18px;padding:0">'+(arr||[]).map(function(x){return '<li style="margin:5px 0;font-size:13.5px;color:var(--mut)">'+es2(x)+'</li>'}).join('')+'</ul>'}
-  if((se.hurricane||[]).length)h+=drawer('Hurricane playbook '+pill('know before the season','bad'),ulist(se.hurricane));
-  if((se.arrival||[]).length)h+=drawer('Arrival checklist (incl. the copper flush) '+pill(se.arrival.length+' steps','info'),ulist(se.arrival));
-  if((se.departure||[]).length)h+=drawer('Departure checklist '+pill(se.departure.length+' steps','info'),ulist(se.departure));
-  if((se.annual||[]).length)h+=drawer('Annual service '+pill(se.annual.length+' items','info'),ulist(se.annual));
+    +'</div><p class="note" style="margin-top:10px">Basis: CDC 1 gallon/person/day, two weeks for hurricane-prone areas; infants 0.5, pets 0.25 gal/day. '+evref('E28')+'</p>');
+  h+='<p class="note">Storm playbook and the seasonal operating checklists are in '+xref('House & Testing','house')+'.</p>';
   h+=endSect();
   root.innerHTML=h;
 
@@ -778,172 +482,297 @@ function renderProtect(root){
   function recompute(){
     var gpd=nval('em-adults')+nval('em-children')+nval('em-guests')+0.5*nval('em-infants')+0.25*nval('em-pets');
     var total=gpd*nval('em-days');
-    put('em-total',(Math.round(total*10)/10)+' gal');
-    put('em-gpd',(Math.round(gpd*100)/100)+' gallons per day for this household');
-    put('em-jugs',String(Math.ceil(total/5)));
-    put('em-cases',String(Math.ceil(total*3.785/12)));
+    put('em-total',(Math.round(total*10)/10)+' gal'); put('em-gpd',(Math.round(gpd*100)/100)+' gallons per day for this household');
+    put('em-jugs',String(Math.ceil(total/5))); put('em-cases',String(Math.ceil(total*3.785/12)));
   }
   ids.forEach(function(id){var e2=root.querySelector('#'+id);if(e2)e2.addEventListener('input',recompute)});
   recompute();
 }
 
-/* ===== testing: three-house plan + decision tree ===== */
-function renderTesting(root){
-  var v=DATA.v2||{}, tp=v.testplan||{}, tree=v.dtree||[];
+/* ===== DRINKING WATER: RO vs carbon block, the pick, remin, storage, rubric ===== */
+function renderDrinking(root){
+  var v=DATA.v2||{}, dd=v.ddecision||{}, dt=v.dtable||[], tc=v.testchange||{}, pl=v.plastics||{}, rm2=v.remin||{}, stg=v.storage||{};
   var h='';
-  h+=sect('Testing plan',esc(tp.headline||'Three houses, three boxes, one protocol'),es2(tp.intro||''));
-  var best=tp.best||{}, mini=tp.minimum||{};
+
+  /* 1 - the decision */
+  h+=sect('The decision','Reverse osmosis at the drinking tap',
+    'The walkthrough call reopened this: Michael\'s RO objection was about whole-house RO, not the drinking tap. With that gone, RO is the more defensible pick.');
+  h+=verdict(esc(dd.headline||''),es2(dd.verdict||''),'good');
   h+='<div class="cards2">'
-    +'<div class="card" style="border-color:var(--pine3)"><h4>'+esc(best.name||'Best plan')+' '+pill(best.cost||'','gold')+'</h4>'
-    +(best.kits||[]).map(function(k){return '<div class="kv"><b>'+esc(k.k)+' &#183; '+esc(k.price)+'</b><span>'+esc(k.covers)+' '+(k.url?chip('Order',k.url,'official'):'')+'</span></div>'}).join('')
-    +'<p class="note">'+esc(best.gap||'')+'</p></div>'
-    +'<div class="card"><h4>'+esc(mini.name||'Minimum plan')+' '+pill(mini.cost||'','gold')+'</h4>'
-    +(mini.kits||[]).map(function(k){return '<div class="kv"><b>'+esc(k.k)+' &#183; '+esc(k.price)+'</b><span>'+esc(k.covers)+' '+(k.url?chip('Order',k.url,'official'):'')+'</span></div>'}).join('')
-    +'<p class="note">'+esc(mini.gap||'')+'</p></div>'
+    +'<div class="card" style="border-color:var(--pine3)"><h4>The pick: '+esc(dd.namedPick||'')+'</h4><p>'+es2(dd.pickWhy||'')+'</p>'+drawer('Two honest caveats','<p>'+es2(dd.pickCaveats||'')+'</p>')+'</div>'
+    +'<div class="card"><h4>The low-plastic alternative</h4><p>A tankless <b>Waterdrop G3P800</b> (registry-listed PFOA/PFOS + lead) eliminates the storage tank entirely. It becomes the better pick <b>if</b> whole-house carbon is installed - which removes the chloramine job the SmartFlow was certified for. One check first: its IAPMO listing is manufacturer-stated and should be confirmed in the registry before purchase.</p></div>'
     +'</div>';
+  h+=drawer('The runner-up and the white-glove alternative',
+    '<p><b>Runner-up (simpler): Multipure Aqualuxe.</b> '+es2('A stainless carbon block - keeps minerals, no waste, no tank, best low-plastic build - but no claims for copper, sodium, nitrate or TDS. The switch-back: '+(dd.switchCondition||''))+'</p>'
+    +'<p><b>Dealer-managed: Culligan / Kinetico.</b> '+es2(dd.altDealer||'')+'</p>'
+    +'<p class="note">'+esc(dd.caveat||'')+'</p>');
   h+=endSect();
 
-  h+=sect('Collection','How to collect the samples so the results mean something',
-    'The first-draw vs flushed distinction is the whole game for the copper question - it separates "the house corrodes while it sleeps" from "something is systemically wrong."');
-  h+=steps((tp.protocol||[]).map(function(p,i){return {n:i+1,t:p.t,d:es2(p.d)}}));
-  h+=verdict('Which results actually change anything',esc(tp.wouldChange||''),'pine');
-  var tg=DATA.testing||{};
-  if((tg.after||[]).length)h+=drawer('When to retest after installation',steps(tg.after.map(function(a,i){return {n:i+1,t:a.t,d:esc(a.d)}})));
-  if(tg.tdsNote)h+=drawer('Why a TDS meter or test strips are not enough '+pill('common myth','warn'),'<p>'+esc(tg.tdsNote)+'</p>');
+  /* 2 - head to head (table in a drawer; tally visible) */
+  h+=sect('Head to head','RO vs the carbon block - scored',
+    'Nineteen factors. RO wins where health and unknowns live; the Aqualuxe wins on simplicity and materials. Not a landslide - a decision.');
+  var tally={ro:0,aql:0,tie:0}; dt.forEach(function(r){tally[r.w]=(tally[r.w]||0)+1});
+  h+='<div class="cards3">'
+    +statCard({k:'RO wins',v:String(tally.ro),s:'PFAS mechanism, copper, TDS, fridge/ice',cls:'good'})
+    +statCard({k:'Aqualuxe wins',v:String(tally.aql),s:'minerals, waste, plastics, simplicity',cls:''})
+    +statCard({k:'Ties',v:String(tally.tie),s:'both certified where it counts',cls:'na'})
+    +'</div>';
+  if(dd.pfasCertNote)h+=verdict('One certification truth both sides share',esc(dd.pfasCertNote),'warn');
+  h+=drawer('Open the full 19-factor table',
+    '<div class="scrollx"><table class="dtx"><tr><th>Factor</th><th>Multipure Aqualuxe</th><th>Under-sink RO</th><th>Winner</th><th>Why it matters</th></tr>'
+    +dt.map(function(r){return '<tr><td><b>'+esc(r.f)+'</b></td><td>'+esc(r.a)+'</td><td>'+esc(r.r)+'</td><td>'+winPill(r.w)+'</td><td style="color:var(--mut)">'+esc(r.why)+'</td></tr>'}).join('')
+    +'</table></div>');
+  h+=drawer('How we chose among ~20 RO systems (the selection rubric)',
+    '<p>Every candidate ran the same three stages, so nothing was weighed for one product and skipped for another:</p>'
+    +'<p><b>Stage 0 - RO vs carbon block.</b> A certified carbon block (Aqualuxe) suffices if the only targets are PFAS, lead, chloramine and organics; you move to RO only when you also need dissolved inorganics removed (copper, sodium, nitrate, TDS). Copper - implicated in the staining - and the unknowns push Bronner to RO.</p>'
+    +'<p><b>Stage 1 - the gate (pass/fail).</b> Disqualified unless the exact model carries a registry-verified certification for PFOA/PFOS AND lead. "Tested to" and SGS reports do not pass - this eliminated most of the field, including the uncertified-PFAS tankless units.</p>'
+    +'<p><b>Stage 2 - weighted scoring</b> (tuned to this client): certified coverage of this water\'s problems ~30%; certification strength (registry-sighted vs tested-to) ~15%; fit to a vacant, hurricane-prone home ~15%; materials / plastic contact ~15%; fridge/ice integration ~10%; maintenance & consumable availability ~10%; wastewater ~5%. Cost is a tiebreaker for a premium client, not a scored factor.</p>'
+    +'<p class="note">This is why the pick is architecture-dependent: with whole-house carbon upstream, the RO\'s own chloramine claim is redundant, which lets a tankless unit win on the plastic dimension without losing what matters.</p>');
   h+=endSect();
 
-  h+=sect('After the results','The decision tree',
-    'Ten branches cover every plausible outcome - each maps a result to an action, so no result stalls the project.');
-  h+='<div class="scrollx"><table class="dtx"><tr><th>If</th><th>Then</th></tr>'
-    +tree.map(function(r){return '<tr><td><b>'+esc(r["if"])+'</b></td><td>'+es2(r.then)+'</td></tr>'}).join('')
-    +'</table></div>';
+  /* 3 - the remineralizer */
+  h+=sect('The remineralizer','What it adds, where it comes from - and why we skip it',esc(rm2.sub||''));
+  h+=verdict(esc(rm2.verdict||'')+' '+labelPill('Do not buy'),
+    'It adds calcium only (not the magnesium the health literature weights most), from a media whose identity, source and grade Aquasana does not disclose - and for a normal diet, drinking water is not a meaningful mineral source.','warn');
+  h+=drawer('The full reasoning ('+((rm2.points||[]).length)+' points)',
+    '<ul style="margin:4px 0 0 18px;padding:0">'+(rm2.points||[]).map(function(p){return '<li style="margin:8px 0">'+es2(p)+'</li>'}).join('')+'</ul>');
+  h+=endSect();
+
+  /* 4 - storage / plastic */
+  h+=sect('How this system stores water','The tank - and the plastic-contact reality',
+    'For a plastic-conscious buyer the storage tank is the RO design\'s weak point, stated precisely here for this exact system.');
+  h+=verdict(esc(stg.verdict||''),'A carbon block like the Aqualuxe has no stored water at all, and a tankless RO removes the tank - this is the clearest tradeoff between the options.','warn');
+  h+='<div class="cards2">'
+    +'<div class="card"><h4>What Aquasana confirms</h4><ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:13.5px">'+(stg.confirmed||[]).map(function(x){return '<li style="margin:5px 0">'+esc(x)+'</li>'}).join('')+'</ul></div>'
+    +'<div class="card"><h4>What it does NOT publish</h4><p>'+es2(stg.gap||'')+'</p></div>'
+    +'</div>';
+  if(stg.seasonal)h+='<p class="note"><b>Seasonal home.</b> '+es2(stg.seasonal)+'</p>';
+  var plBody='';
+  if(pl.tldr)plBody+='<p><i>'+esc(pl.tldr)+'</i></p>';
+  if((pl.findings||[]).length)plBody+=(pl.findings||[]).map(function(f){return '<div class="kv"><b>'+esc(f.t)+'</b><span>'+esc(f.d)+'</span></div>'}).join('');
+  if((pl.ranking||[]).length)plBody+='<p style="margin-top:8px"><b>Low-plastic ranking of the real options</b></p>'+(pl.ranking||[]).map(function(r){return '<div class="kv"><b>'+esc(r.n)+'</b><span>'+esc(r.d)+'</span></div>'}).join('');
+  if(pl.netCall)plBody+='<p style="margin-top:8px"><b>Net call.</b> '+esc(pl.netCall)+'</p>';
+  if(stg.tankless)plBody+='<p style="margin-top:8px"><b>If plastic is the deciding factor.</b> '+es2(stg.tankless)+'</p>';
+  if(plBody)h+=drawer('The plastics deep-dive: polypropylene, microplastic shedding, and the alternatives',plBody);
+  h+=endSect();
+
+  /* 5 - will testing change it (compact) */
+  h+=sect('Testing','Will testing change this pick? No - it tunes the add-ons',
+    'The recommendation is made now. Testing validates the choice and decides the whole-house add-ons - it does not gate whether you treat the drinking tap.');
+  h+=verdict('The short answer',esc(tc.verdict||''),'pine');
+  h+=drawer('What testing will NOT change vs what it COULD change',
+    '<div class="cards2"><div class="card"><h4>Will NOT change</h4><ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:13px">'+(tc.wont||[]).map(function(x){return '<li style="margin:5px 0">'+esc(x)+'</li>'}).join('')+'</ul></div>'
+    +'<div class="card"><h4>COULD change</h4>'+(tc.could||[]).map(function(x){return '<div class="kv"><b>'+esc(x.t)+'</b><span>'+esc(x.d)+'</span></div>'}).join('')+'</div></div>');
+  h+='<p class="note">The action-driven testing plan - which tests decide something now vs verify the install - is in '+xref('House & Testing','house')+'.</p>';
   h+=endSect();
   root.innerHTML=h;
 }
 
-/* ===== follow: open questions + John's checklist + vendors ===== */
-function renderFollow(root){
-  var d=DATA, v=d.v2||{};
+/* ===== HOUSE & TESTING: whole-house carbon, staining, outdoor shower, testing ===== */
+function renderHouse(root){
+  var d=DATA, v=d.v2||{}, st=v.staining||{}, od=v.outdoor||{}, tp=v.testplan||{}, tree=v.dtree||[];
   var h='';
-  h+=sect('Open questions','Seventeen questions for Michael and Lisa',
-    'Most take seconds to answer; three of them (marked) change equipment decisions.');
-  h+='<div class="scrollx"><table class="dtx"><tr><th style="width:40px">#</th><th>Question</th></tr>'
-    +(v.openQuestions||[]).map(function(q,i){return '<tr><td>'+(i+1)+'</td><td>'+es2(q)+'</td></tr>'}).join('')
-    +'</table></div>';
+
+  /* 1 - whole-house carbon */
+  h+=sect('Whole-house treatment','Catalytic carbon: recommended, for comfort and byproducts',
+    'One tank where the water enters, so every shower, bath and tap gets dechloraminated water. A comfort-and-precaution layer - the health priority stays at the drinking tap.');
+  h+='<div class="cards2">'
+    +'<div class="card"><h4>Why it earns its place</h4><ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:13.5px">'
+    +'<li style="margin:4px 0">House-wide chloramine, taste and odor removal</li>'
+    +'<li style="margin:4px 0">Reduces trihalomethanes at the shower, where they volatilize</li>'
+    +'<li style="margin:4px 0">Makes the tub and outdoor-shower filter questions mostly moot downstream</li></ul></div>'
+    +'<div class="card"><h4>Explicitly NOT recommended</h4><ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:13.5px">'
+    +'<li style="margin:4px 0">'+pill('No','bad')+' whole-house RO - waste, corrosion, stagnation, no health gain</li>'
+    +'<li style="margin:4px 0">'+pill('No','bad')+' whole-house PFAS media - PFAS is a drinking exposure</li>'
+    +'<li style="margin:4px 0">'+pill('Wait','warn')+' softener / pH neutralizer - test-gated, expected unnecessary</li></ul></div>'
+    +'</div>';
+  h+='<p class="note">Irrigation and pool fill bypass before treatment. Carbon hardware candidates and certifications are archived in '+xref('Evidence','evidence')+'.</p>';
   h+=endSect();
 
-  h+=sect('Next steps','John\'s follow-up checklist',
-    'Everything owed after this meeting, in order.');
-  h+=steps((v.johnChecklist||[]).map(function(c,i){return {n:i+1,t:es2(c.t),d:es2(c.d)}}));
+  /* 2 - staining */
+  h+=sect('The tub','Blue-green tub staining: what it means',es2(st.tldr||''));
+  h+='<div class="cards2"><div class="card"><h4>What is actually happening</h4><ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:13px">'
+    +(st.why||[]).slice(0,4).map(function(w){return '<li style="margin:5px 0">'+es2(w)+'</li>'}).join('')+'</ul></div>'
+    +'<div class="card"><h4>The fix, cheapest first</h4><ul style="margin:6px 0 0 18px;padding:0;color:var(--mut);font-size:13px">'+(st.remedies||[]).slice(0,3).map(function(r){return '<li style="margin:5px 0"><b>'+esc(r.t)+'.</b> '+es2(r.d)+'</li>'}).join('')+'</ul></div></div>';
+  h+=verdict('Should Lisa buy a tub spout filter? '+labelPill('Do not buy'),
+    'It cannot stop the staining - the copper is dissolved into the water upstream of the tub, and slip-on "15-stage" filters carry no certification and about a second of contact. The real fix is the copper/pH test plus the flush routine, and the whole-house carbon handles chloramine at every tub anyway.','bad');
+  h+=drawer('The copper decision rules - what each test result means',
+    '<div class="scrollx"><table class="dtx"><tr><th>If the tests show</th><th>Then</th></tr>'
+    +(st.rules||[]).map(function(r){return '<tr><td><b>'+esc(r["if"])+'</b></td><td>'+es2(r.then)+'</td></tr>'}).join('')+'</table></div>');
   h+=endSect();
 
-  h+=sect('Research status','The ten research follow-ups from the call - status',
-    'Every follow-up Michael raised is either resolved in this revision or scheduled with an owner.');
-  h+='<div class="scrollx"><table class="dtx"><tr><th>Follow-up</th><th>Status</th><th>Where it landed</th></tr>'
-    +(v.researchStatus||[]).map(function(r){return '<tr><td><b>'+esc(r.t)+'</b></td><td>'+pill(r.s==='done'?'Done':'Partial',r.s==='done'?'good':'warn')+'</td><td style="color:var(--mut)">'+esc(r.d)+'</td></tr>'}).join('')
-    +'</table></div>';
+  /* 3 - outdoor shower */
+  h+=sect('The outdoor shower',esc(od.headline||'The outdoor shower'),es2(od.intro||''));
+  h+=verdict('Best outcome: bring it downstream of the whole-house carbon - then it needs no filter',
+    esc(od.filterTruth||''),'warn');
+  h+=drawer('The plumbing decision path ('+((od.path||[]).length)+' steps) and the shower-filter picks',
+    steps((od.path||[]).map(function(p,i){return {n:i+1,t:p.t,d:es2(p.d)}}))
+    +'<div class="cards3" style="margin-top:10px">'+(od.picks||[]).map(function(p){return '<div class="card"><h4>'+esc(p.n)+'</h4><p style="margin:0 0 6px">'+labelPill(p.label||'')+'</p><p>'+es2(p.d)+'</p></div>'}).join('')+'</div>'
+    +'<p class="note">'+es2(od.note||'')+'</p>');
   h+=endSect();
 
-  h+='<p class="note">Local vendors (installers, dealers, labs) and the archived seven-phase plan live in the Evidence appendix: '+xref('Evidence','evidence')+'</p>';
+  /* 4 - testing plan, ACTION-DRIVEN split */
+  h+=sect('Testing',esc(tp.headline||'Three houses, one protocol')+' - and why we test',
+    'Testing must drive action, not exist for its own sake. Once RO + whole-house carbon is the plan, the tests split into two buckets - and only one justifies testing before you buy.');
+  h+='<div class="cards2">'
+    +'<div class="card" style="border-color:var(--good)"><h4>Still drives a decision - test before you finalize</h4><p style="font-size:12.5px;color:var(--mut);margin:0 0 6px">Things neither the RO nor the carbon fixes.</p><ul style="margin:0 0 0 18px;padding:0;color:var(--mut);font-size:13px">'
+    +'<li style="margin:5px 0"><b>Copper (first-draw + flushed) + pH + alkalinity</b> - the only lever on the tub staining and the only trigger for a pH neutralizer / corrosion control</li>'
+    +'<li style="margin:5px 0"><b>Hardness</b> - the only trigger for a softener</li>'
+    +'<li style="margin:5px 0"><b>Coliform / E. coli</b> - the only trigger for a vacancy sanitization step</li></ul></div>'
+    +'<div class="card"><h4>No longer changes the buy - verify at/after install</h4><p style="font-size:12.5px;color:var(--mut);margin:0 0 6px">RO + carbon remove these whatever the reading.</p><ul style="margin:0 0 0 18px;padding:0;color:var(--mut);font-size:13px">'
+    +'<li style="margin:5px 0"><b>PFAS, lead, TTHM, sodium, nitrate, arsenic, TDS</b> - a post-install sample proving the system works, plus a documented baseline. Testing these before install is testing for its own sake.</li></ul></div>'
+    +'</div>';
+  h+=verdict('The payoff',
+    'For the Vero Beach primary, if RO + carbon is locked, shrink the pre-install kit to a corrosion + hardness + bacteria panel and move PFAS/lead to a post-install verification - every dollar buys a decision or a proof. The other two houses, where treatment is undecided, still warrant the fuller panel because there the results still drive the RO-vs-simpler-filter call.','pine');
+  h+=drawer('The kit options, exact SKUs and collection protocol',
+    '<div class="cards2"><div class="card"><h4>'+esc((tp.best||{}).name||'Best plan')+' '+pill((tp.best||{}).cost||'','gold')+'</h4>'
+    +((tp.best||{}).kits||[]).map(function(k){return '<div class="kv"><b>'+esc(k.k)+' &#183; '+esc(k.price)+'</b><span>'+esc(k.covers)+' '+(k.url?chip('Order',k.url,'official'):'')+'</span></div>'}).join('')
+    +'<p class="note">'+esc((tp.best||{}).gap||'')+'</p></div>'
+    +'<div class="card"><h4>'+esc((tp.minimum||{}).name||'Minimum')+' '+pill((tp.minimum||{}).cost||'','gold')+'</h4>'
+    +((tp.minimum||{}).kits||[]).map(function(k){return '<div class="kv"><b>'+esc(k.k)+' &#183; '+esc(k.price)+'</b><span>'+esc(k.covers)+' '+(k.url?chip('Order',k.url,'official'):'')+'</span></div>'}).join('')
+    +'<p class="note">'+esc((tp.minimum||{}).gap||'')+'</p></div></div>'
+    +'<p style="margin-top:10px"><b>Collection protocol</b></p>'+steps((tp.protocol||[]).map(function(p,i){return {n:i+1,t:p.t,d:es2(p.d)}})));
+  h+=drawer('The decision tree after results ('+tree.length+' branches)',
+    '<div class="scrollx"><table class="dtx"><tr><th>If</th><th>Then</th></tr>'
+    +tree.map(function(r){return '<tr><td><b>'+esc(r["if"])+'</b></td><td>'+es2(r.then)+'</td></tr>'}).join('')+'</table></div>');
+  /* seasonal ops preserved here */
+  var se=d.seasonal||{};
+  function ulist(arr){return '<ul style="margin:6px 0 2px 18px;padding:0">'+(arr||[]).map(function(x){return '<li style="margin:5px 0;font-size:13.5px;color:var(--mut)">'+es2(x)+'</li>'}).join('')+'</ul>'}
+  var seBody='';
+  if((se.hurricane||[]).length)seBody+='<p><b>Hurricane playbook</b></p>'+ulist(se.hurricane);
+  if((se.arrival||[]).length)seBody+='<p><b>Arrival checklist (incl. the copper flush)</b></p>'+ulist(se.arrival);
+  if((se.departure||[]).length)seBody+='<p><b>Departure checklist</b></p>'+ulist(se.departure);
+  if(seBody)h+=drawer('Seasonal operations: storm playbook + arrival/departure checklists',seBody);
+  h+=endSect();
   root.innerHTML=h;
 }
 
-/* ===== evidence: certification notes + appendix ===== */
-function renderEvidenceV2(root){
+/* ===== EVIDENCE: source credibility, the water detail, library, appendix ===== */
+function renderEvidence(root){
   var d=DATA, v=d.v2||{};
   var h='';
-  /* source credibility update, up front */
-  h+=sect('Source credibility','How evidence is weighed - updated per Michael\'s flag',
-    'Recommendations rest on exact-model certifications and contaminant fit - never influencer rankings, consumer-app scores, or marketing claims.');
+
+  /* 1 - source credibility + Oasis demotion */
+  h+=sect('How we weigh evidence','Certifications and utility data - not app scores',
+    'Recommendations rest on exact-model certifications and contaminant fit, never influencer rankings, consumer-app scores, or marketing claims.');
   h+=verdict('Oasis Health: demoted to secondary, non-authoritative',
-    'Michael flagged the Oasis Health app as potentially suspect. For the record: it never carried decision weight here - our picks were made on certification registries and utility data, then cross-checked against Oasis afterward as an outside opinion. From this revision on it is labeled explicitly as secondary context, cited nowhere as proof, and every place it appears carries this label.','warn');
-  h+='<p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin:14px 0 6px">The evidence hierarchy, as applied</p>';
-  h+=steps([
-    {n:1,t:'EPA data & federal records',d:'UCMR5 monitoring, SDWIS, the Lead and Copper Rule - the PFOS number and the copper baseline come from here.'},
-    {n:2,t:'City of Vero Beach CCR',d:'Treatment train, chloramine levels, LCR tap-sampling results - pulled from the actual 2025 report PDF and re-verified this week.'},
-    {n:3,t:'Certifier databases (NSF, WQA, IAPMO)',d:'The only acceptable proof of a product claim: the exact model\'s live listing, sighted by us. "Tested to" never upgrades to "certified."'},
-    {n:4,t:'Peer-reviewed studies & extension services',d:'The plastics, copper-corrosion and carbon-regrowth science.'},
-    {n:5,t:'Manufacturer documents',d:'Specs and data sheets - used and always labeled as manufacturer-sourced.'},
-    {n:6,t:'Consumer apps, blogs, reviews, Oasis Health',d:'Secondary context and usability signal only. Never evidence that a product works.'}
-  ]);
+    'Per Michael\'s flag: Oasis never carried decision weight here - picks were made on certification registries and utility data, then cross-checked against Oasis afterward. From this revision it is labeled secondary context, cited nowhere as proof.','warn');
+  h+=drawer('The evidence hierarchy, as applied',
+    steps([
+      {n:1,t:'EPA data & federal records',d:'UCMR5 monitoring, SDWIS, the Lead and Copper Rule - the PFOS number and copper baseline.'},
+      {n:2,t:'City of Vero Beach CCR',d:'Treatment train, chloramine levels, LCR results - from the actual 2025 report, re-verified this week.'},
+      {n:3,t:'Certifier databases (NSF, WQA, IAPMO)',d:'The only proof of a product claim: the exact model\'s live listing, sighted by us. "Tested to" never upgrades to "certified".'},
+      {n:4,t:'Peer-reviewed & extension science',d:'The plastics, copper-corrosion and carbon-regrowth findings.'},
+      {n:5,t:'Manufacturer documents',d:'Specs and data sheets, always labeled as manufacturer-sourced.'},
+      {n:6,t:'Consumer apps, blogs, Oasis Health',d:'Secondary context and usability signal only - never evidence a product works.'}
+    ]));
   h+=endSect();
+
+  /* 2 - the water (moved from its own tab into Evidence) */
+  var hf=d.healthFraming||{};
+  h+=sect('The water in detail','Contaminants, measured against health guidelines',
+    'The headline three facts are in the Summary; the full ledger and the health-guideline lens live here.');
+  if(hf.philosophy)h+=verdict('Compliant is not the same as clean',esc(hf.philosophy),'pine');
+  var rows=(hf.chart||{}).rows||[];
+  if(rows.length){
+    var hgBar=function(r){var lbl=r.multLabel||(r.mult?r.mult+'x health guideline':'');
+      var pct=(r.mult&&r.mult>0)?Math.max(4,Math.min(100,Math.round((Math.log(r.mult)/Math.log(1000))*100))):100;
+      var cls=r.st==='concern'?'bad':(r.st==='caution'?'warn':(r.st==='good'?'good':'gold'));
+      return '<div class="bar '+cls+'"><div class="bl"><span><b>'+esc(r.name)+'</b> <span style="color:var(--mut);font-weight:400">'+esc(r.measured)+'</span></span><b>'+esc(lbl)+'</b></div><div class="bt"><div class="bf" style="width:'+pct+'%"></div></div></div>';};
+    h+='<div style="margin:12px 0">'+rows.map(hgBar).join('')+'</div>';
+    if((hf.chart||{}).note)h+='<p class="note">'+esc(hf.chart.note)+'</p>';
+  }
+  h+='<div class="cards3">'
+    +statCard({k:'Copper, 90th pct',v:'0.337 mg/L',s:'vs 1.3 action level - zero exceedances',cls:'good'})
+    +statCard({k:'Lead, 90th pct',v:'5.0 ppb',s:'vs 15; one site hit 20 individually',cls:'warn'})
+    +statCard({k:'Chloramine, 2025 avg',v:'3.13 ppm',s:'fluoridation ended June 2025',cls:''})
+    +'</div>';
+  var conts=d.contaminants||[];
+  if(conts.length)h+=drawer('Full contaminant ledger ('+conts.length+' entries)',
+    '<div class="scrollx"><table class="dtx"><tr><th>Contaminant</th><th>Level</th><th>Limit</th><th>Status</th><th>Note</th></tr>'
+    +conts.map(function(c){c=c||{};return '<tr><td><b>'+esc(c.name||'')+'</b></td><td>'+esc(c.level||'')+'</td><td>'+esc(c.limit||'')+'</td><td>'+esc(c.status||'')+'</td><td style="color:var(--mut)">'+esc(c.note||c.detail||'')+'</td></tr>'}).join('')+'</table></div>');
+  var xm=d.exposureMap||{}, routes=xm.routes||[];
+  if((xm.rows||[]).length){
+    var xt='<div class="scrollx"><table class="dtx"><tr><th>Contaminant</th>'+routes.map(function(r){return '<th>'+esc(r)+'</th>'}).join('')+'<th>Means</th></tr>'
+      +(xm.rows||[]).map(function(r){return '<tr><td><b>'+esc(r.c||'')+'</b></td>'+routes.map(function(_,j){var lv=(r.v||[])[j];return '<td>'+(lv?heat(lv):'&#8212;')+'</td>'}).join('')+'<td style="color:var(--mut)">'+esc(r.note||'')+'</td></tr>'}).join('')+'</table></div>';
+    h+=drawer('Exposure routes: drink-it vs breathe-it vs bathe-in-it',xt);
+  }
+  h+=endSect();
+
   root.innerHTML=h;
-  /* append the original evidence tab content (library, corrections, unresolved, method, oasis detail) */
+
+  /* 3 - legacy evidence body (library, corrections, method, oasis methodology) */
   var holder=document.createElement('div');
   renderEvidenceLegacy(holder);
   while(holder.firstChild)root.appendChild(holder.firstChild);
-  /* appendix: preserved research */
-  var app=document.createElement('div');
-  var ah='';
+
+  /* 4 - appendix: preserved research */
+  var app=document.createElement('div'); var ah='';
   ah+=sect('Appendix','Preserved research from the prior passes',
-    'Nothing was deleted in this consolidation - the full prior analyses live here.');
-  /* claims archive */
-  var claims=d.claims||[];
-  if(claims.length){
-    ah+=drawer('The ten folk-wisdom claims, tested against evidence ('+claims.length+')',
-      '<div class="scrollx"><table class="dtx"><tr><th>Claim</th><th>Verdict</th><th>Plain English</th></tr>'
-      +claims.map(function(c){return '<tr><td><b>'+esc(c.title||'')+'</b></td><td>'+esc(c.verdict||'')+'</td><td style="color:var(--mut)">'+esc(c.tldr||c.plain||'')+'</td></tr>'}).join('')
-      +'</table></div>');
+    'Nothing was deleted in the consolidation - the full prior analyses live here.');
+
+  /* open questions + checklist (from Follow-ups) */
+  if((v.openQuestions||[]).length)ah+=drawer('Open questions for Michael and Lisa ('+v.openQuestions.length+')',
+    '<div class="scrollx"><table class="dtx"><tr><th style="width:40px">#</th><th>Question</th></tr>'+(v.openQuestions||[]).map(function(q,i){return '<tr><td>'+(i+1)+'</td><td>'+es2(q)+'</td></tr>'}).join('')+'</table></div>');
+  if((v.johnChecklist||[]).length)ah+=drawer('John\'s follow-up checklist ('+v.johnChecklist.length+')',
+    steps((v.johnChecklist||[]).map(function(c,i){return {n:i+1,t:es2(c.t),d:es2(c.d)}})));
+  if((v.researchStatus||[]).length)ah+=drawer('Research follow-ups from the call - status',
+    '<div class="scrollx"><table class="dtx"><tr><th>Follow-up</th><th>Status</th><th>Where</th></tr>'+(v.researchStatus||[]).map(function(r){return '<tr><td><b>'+esc(r.t)+'</b></td><td>'+pill(r.s==='done'?'Done':'Partial',r.s==='done'?'good':'warn')+'</td><td style="color:var(--mut)">'+esc(r.d)+'</td></tr>'}).join('')+'</table></div>');
+
+  /* certification classification (from Product Plan) */
+  if((v.certClass||[]).length){
+    var cc=(v.certClass||[]).map(function(pc){
+      var body=(pc.levels||[]).map(function(L){var cls=/^Certified by exact/.test(L[0])?'good':(/^Independently|^Certified per|^Performance/.test(L[0])?'info':(/^Expected/.test(L[0])?'warn':(/^Not covered|^Not supported/.test(L[0])?'bad':'na')));return '<div class="kv"><b>'+pill(L[0],cls)+'</b><span>'+esc(L[1])+'</span></div>'}).join('');
+      return '<p style="margin:10px 0 4px"><b>'+esc(pc.p)+'</b></p>'+body;
+    }).join('');
+    ah+=drawer('Every recommended product, classified claim by claim',cc+'<p class="note">A product is called "certified" only when the exact model\'s listing in the certifier\'s own database says so.</p>');
   }
-  /* original 18 questions */
-  var qs=d.questions||[];
-  if(qs.length){
-    ah+=drawer('Michael\'s original '+qs.length+' questions, answered (archive)',
-      '<div class="scrollx"><table class="dtx"><tr><th>Question</th><th>Answer</th><th>Verdict</th></tr>'
-      +qs.map(function(q){return '<tr><td><b>'+es2(q.q||'')+'</b></td><td style="color:var(--mut)">'+esc(q.tldr||q.conclusion||'')+'</td><td>'+esc(q.verdict||'')+'</td></tr>'}).join('')
-      +'</table></div>');
-  }
-  /* premium benchmark compact */
+
+  /* product archive */
+  var Pl=d.products||[];
+  if(Pl.length)ah+=drawer('Product research archive ('+Pl.length+' systems reviewed)',
+    '<div class="scrollx"><table class="dtx"><tr><th>Product</th><th>Category</th><th>Status</th><th>Certification</th><th>Note</th></tr>'
+    +Pl.map(function(p){p=p||{};var st=String(p.status||'');var cls=p.pick?'good':(/conditional/i.test(st)?'warn':(/avoid/i.test(st)?'bad':(/recommend|alternative/i.test(st)?'info':'na')));return '<tr><td><b>'+esc(p.name||'')+'</b></td><td>'+esc(p.cat||'')+'</td><td>'+pill(p.pick?'Prior pick':st||'Reviewed',cls)+'</td><td>'+esc(p.certified||p.stds||'')+'</td><td style="color:var(--mut)">'+esc(p.limitation||p.verdict||'')+'</td></tr>'}).join('')+'</table></div>');
+
+  /* premium benchmark */
   var pm=d.premium||{};
   if(pm.finalAnswer){
     var pmB='<p>'+esc(pm.finalAnswer)+'</p>';
-    if((pm.packages||[]).length){
-      pmB+='<div class="scrollx"><table class="dtx"><tr><th>Package</th><th>Installed</th><th>Annual</th><th>Verdict</th></tr>'
-        +(pm.packages||[]).map(function(p){return '<tr><td><b>'+esc(p.name||'')+'</b></td><td>'+esc(p.installed||'')+'</td><td>'+esc(p.annual||'')+'</td><td style="color:var(--mut)">'+esc(p.tag||'')+'</td></tr>'}).join('')
-        +'</table></div>';
-    }
-    if((pm.estate||[]).length){
-      pmB+='<p style="margin-top:10px"><b>Estate whole-house RO systems reviewed:</b> '+(pm.estate||[]).map(function(x){return esc(x.name||'')}).join(' &#183; ')+' - none carries a complete-system PFAS certification, and whole-house RO stays not recommended.</p>';
-    }
-    if((pm.wellness||[]).length){
-      pmB+='<p><b>Wellness systems reviewed:</b> '+(pm.wellness||[]).map(function(x){return esc(x.product||'')}).join(' &#183; ')+' - none certified for the contaminants that matter here; claims graded in the prior pass.</p>';
-    }
-    ah+=drawer('The premium benchmark: does spending more buy cleaner water? (answer: no)',pmB);
+    if((pm.packages||[]).length)pmB+='<div class="scrollx"><table class="dtx"><tr><th>Package</th><th>Installed</th><th>Annual</th><th>Verdict</th></tr>'+(pm.packages||[]).map(function(p){return '<tr><td><b>'+esc(p.name||'')+'</b></td><td>'+esc(p.installed||'')+'</td><td>'+esc(p.annual||'')+'</td><td style="color:var(--mut)">'+esc(p.tag||'')+'</td></tr>'}).join('')+'</table></div>';
+    if((pm.estate||[]).length)pmB+='<p style="margin-top:8px"><b>Estate whole-house RO reviewed:</b> '+(pm.estate||[]).map(function(x){return esc(x.name||'')}).join(' &#183; ')+' - none carries a complete-system PFAS certification.</p>';
+    if((pm.wellness||[]).length)pmB+='<p><b>Wellness systems reviewed:</b> '+(pm.wellness||[]).map(function(x){return esc(x.product||'')}).join(' &#183; ')+' - none certified for the contaminants that matter here.</p>';
+    ah+=drawer('Premium benchmark: does spending more buy cleaner water? (no)',pmB);
   }
+
   /* treatments reference */
   var tr=d.treatments||[];
-  if(tr.length){
-    ah+=drawer('Reference: what each treatment technology removes ('+tr.length+' technologies)',
-      '<div class="scrollx"><table class="dtx"><tr><th>Technology</th><th>Removes well</th><th>Does not remove</th><th>Certification</th></tr>'
-      +tr.map(function(t){return '<tr><td>'+esc(t.tech||'')+'</td><td>'+esc((t.good||[]).join(', '))+'</td><td>'+esc((t.no||[]).join(', '))+'</td><td>'+esc(t.cert||'')+'</td></tr>'}).join('')
-      +'</table></div>');
-  }
+  if(tr.length)ah+=drawer('Reference: what each treatment technology removes ('+tr.length+')',
+    '<div class="scrollx"><table class="dtx"><tr><th>Technology</th><th>Removes well</th><th>Does not remove</th><th>Certification</th></tr>'+tr.map(function(t){return '<tr><td>'+esc(t.tech||'')+'</td><td>'+esc((t.good||[]).join(', '))+'</td><td>'+esc((t.no||[]).join(', '))+'</td><td>'+esc(t.cert||'')+'</td></tr>'}).join('')+'</table></div>');
+
+  /* claims + original questions */
+  var claims=d.claims||[];
+  if(claims.length)ah+=drawer('The ten folk-wisdom claims, tested ('+claims.length+')',
+    '<div class="scrollx"><table class="dtx"><tr><th>Claim</th><th>Verdict</th><th>Plain English</th></tr>'+claims.map(function(c){return '<tr><td><b>'+esc(c.title||'')+'</b></td><td>'+esc(c.verdict||'')+'</td><td style="color:var(--mut)">'+esc(c.tldr||c.plain||'')+'</td></tr>'}).join('')+'</table></div>');
+  var qs=d.questions||[];
+  if(qs.length)ah+=drawer('Michael\'s original '+qs.length+' questions, answered',
+    '<div class="scrollx"><table class="dtx"><tr><th>Question</th><th>Answer</th><th>Verdict</th></tr>'+qs.map(function(q){return '<tr><td><b>'+es2(q.q||'')+'</b></td><td style="color:var(--mut)">'+esc(q.tldr||q.conclusion||'')+'</td><td>'+esc(q.verdict||'')+'</td></tr>'}).join('')+'</table></div>');
+
   /* local vendors */
   var V=d.vendors||{};
   function tel2(p){return 'tel:'+String(p||'').replace(/[^0-9]/g,'')}
   var vend='';
-  ['installers','dealers','testing','inspection'].forEach(function(k){
-    var arr=V[k]||[];
-    if(!arr.length)return;
+  ['installers','dealers','testing','inspection'].forEach(function(k){var arr=V[k]||[];if(!arr.length)return;
     vend+='<p style="margin:10px 0 4px"><b>'+k.charAt(0).toUpperCase()+k.slice(1)+'</b></p>';
-    arr.forEach(function(x){
-      vend+='<p style="margin:6px 0"><b>'+es2(x.name||x.brand||'')+'</b>'+(x.whatFor?' - '+es2(x.whatFor):'')+(x.note?'<br><span style="color:var(--mut);font-size:12.5px">'+es2(x.note)+'</span>':'')
-        +(x.phone?'<br>'+chip(pscrub(x.phone),tel2(x.phone),'official'):'')+(x.url?' '+chip('Website',x.url,'official'):'')+'</p>';
-    });
+    arr.forEach(function(x){vend+='<p style="margin:6px 0"><b>'+es2(x.name||x.brand||'')+'</b>'+(x.whatFor?' - '+es2(x.whatFor):'')+(x.phone?'<br>'+chip(pscrub(x.phone),tel2(x.phone),'official'):'')+(x.url?' '+chip('Website',x.url,'official'):'')+'</p>'});
   });
-  if(vend)ah+=drawer('Local vendors: installers, dealers, labs, inspection (Vero Beach area)',vend+'<p class="note">Verified at research time - confirm licensing, insurance and availability before hiring.</p>');
-  var ph=d.phases||[];
-  if(ph.length){
-    ah+=drawer('The original seven-phase project plan (archive - superseded by the follow-up checklist)',
-      steps(ph.map(function(p){return {n:p.n,t:pscrub(p.t||''),d:(p.owner?pill(pscrub(p.owner),'pine')+'<br>':'')+(p.items||[]).map(function(it){return es2(it)}).join('<br>')}})));
-  }
-  ah+='<p class="note">Archived text may reference the prior tab layout (e.g. "Product Selection", "Next Steps") - those sections now live under the current tabs.</p>';
+  if(vend)ah+=drawer('Local vendors: installers, dealers, labs (Vero Beach area)',vend+'<p class="note">Confirm licensing, insurance and availability before hiring.</p>');
+  ah+='<p class="note">Archived text may reference the prior tab layout; those sections now live under the current five tabs.</p>';
   ah+=endSect();
   app.innerHTML=ah;
   while(app.firstChild)root.appendChild(app.firstChild);
 }
 
-/* ===== evidence (legacy body, reused inside renderEvidenceV2) ===== */
+/* ===== legacy evidence body (reused inside renderEvidence) ===== */
 /* ===== evidence ===== */
 function renderEvidenceLegacy(root){
   var h='';
@@ -1078,7 +907,7 @@ function renderEvidenceLegacy(root){
 }
 
 /* ============ shell ============ */
-const RENDER={summary:()=>renderSummary(el('summary')),water:()=>renderWater(el('water')),products:()=>renderProducts(el('products')),drinking:()=>renderDrinking(el('drinking')),house:()=>renderHouse(el('house')),protect:()=>renderProtect(el('protect')),testing:()=>renderTesting(el('testing')),follow:()=>renderFollow(el('follow')),evidence:()=>renderEvidenceV2(el('evidence'))};
+const RENDER={summary:()=>renderSummary(el('summary')),plan:()=>renderPlan(el('plan')),drinking:()=>renderDrinking(el('drinking')),house:()=>renderHouse(el('house')),evidence:()=>renderEvidence(el('evidence'))};
 function el(t){return document.getElementById('tab-'+t)}
 const done={};
 function show(tab){document.querySelectorAll('nav.tabs button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===tab)));document.querySelectorAll('.tab').forEach(s=>s.classList.toggle('on',s.id==='tab-'+tab));if(!done[tab]&&RENDER[tab]){try{RENDER[tab]()}catch(e){el(tab).innerHTML='<p class="note">Section failed to render: '+esc(e.message)+'</p>'}done[tab]=true}if(location.hash!=='#'+tab)history.replaceState(null,'','#'+tab);window.scrollTo({top:0})}
@@ -1103,7 +932,7 @@ function presentGo(i){
   window.scrollTo({top:0});
 }
 document.getElementById('present-back').addEventListener('click',function(){presentGo(DECK_I-1)});
-function presentAdvance(){if(!DECK)return;if(DECK_I===DECK.length-1){exitPresent();show('follow');}else presentGo(DECK_I+1)}
+function presentAdvance(){if(!DECK)return;if(DECK_I===DECK.length-1){exitPresent();show('plan');}else presentGo(DECK_I+1)}
 document.getElementById('present-next').addEventListener('click',presentAdvance);
 document.addEventListener('keydown',function(e){if(!document.body.classList.contains('presenting'))return;
   if(e.key==='ArrowRight'||e.key===' '||e.key==='Enter'||e.key==='PageDown'){e.preventDefault();presentAdvance();}
