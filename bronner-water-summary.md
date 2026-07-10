@@ -75,7 +75,7 @@ Reasons:
 
 **Testing COULD change:** Aqualuxe-vs-RO validation (the switch-back condition); pH neutralization (only if pH < ~6.5–7.0 — expected NOT to trigger on lime-softened water); copper corrosion control; softener (only if hardness is high); whole-house carbon urgency (if property TTHM is high); microbial startup procedures after vacancy; outdoor-shower treatment (decided by the plumbing inspection, not the water test).
 
-## 5. Final product plan (recommended balanced design)
+## 5. Final product plan (the recommended design)
 
 | Component | Action |
 |---|---|
@@ -87,7 +87,7 @@ Reasons:
 | Tub spout filter | **Do not buy** |
 | Outdoor shower (if on a separate line) | **Vitamin C filter (Sonaki) now; re-route onto treated line later** |
 
-Also defined: a **minimal health-first design** (~$800–1,500: certified drinking system + test kits only) and a **premium comfort/resilience design** (~$8,000–16,000: dealer-managed RO + carbon + full protection + outdoor-shower re-route + service plan).
+This is the single recommended design; earlier minimal and premium-tier variants have been dropped now that this is the chosen path.
 
 **Explicitly not recommended:** whole-house RO; whole-house PFAS media as a default (PFAS and lead are drinking/cooking exposures — treat at the tap); UV without a confirmed cause; softener/pH gear without supporting tests; wellness water gadgets (alkaline/hydrogen/structured — none certified for what matters here); Berkey (EPA stop-sale order on its elements).
 
