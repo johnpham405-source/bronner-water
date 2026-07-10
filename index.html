@@ -540,7 +540,6 @@ function renderPlan(root){
     +'<div><div style="'+LBL+'">5-gallon jugs</div><div id="em-jugs" style="font-family:var(--ser);font-size:22px;font-weight:600">&#8212;</div></div>'
     +'<div><div style="'+LBL+'">Cases of 24 x 500 mL</div><div id="em-cases" style="font-family:var(--ser);font-size:22px;font-weight:600">&#8212;</div></div>'
     +'</div><p class="note" style="margin-top:10px">Basis: CDC 1 gallon/person/day, two weeks for hurricane-prone areas; infants 0.5, pets 0.25 gal/day. '+evref('E28')+'</p>');
-  h+='<p class="note">Storm playbook and the seasonal operating checklists are in '+xref('House & Testing','house')+'.</p>';
   h+=endSect();
   root.innerHTML=h;
 
@@ -683,20 +682,11 @@ function renderHouse(root){
   }).join('');
   if(tp.pfasNote)h+='<p class="note"><b>No separate PFAS test up front:</b> '+es2(tp.pfasNote)+'</p>';
   if(tp.afterInstall)h+=verdict('After the systems are installed',es2(tp.afterInstall),'pine');
-  if(tp.decidesWhat)h+='<p class="note"><b>What the baseline decides:</b> '+es2(tp.decidesWhat)+'</p>';
   if(tp.holdList)h+='<p class="note"><b>Hold until results are reviewed:</b> '+es2(tp.holdList)+'</p>';
   h+=drawer('Collection protocol',steps((tp.protocol||[]).map(function(p,i){return {n:i+1,t:p.t,d:es2(p.d)}})));
   h+=drawer('The decision tree after results ('+tree.length+' branches)',
     '<div class="scrollx"><table class="dtx"><tr><th>If</th><th>Then</th></tr>'
     +tree.map(function(r){return '<tr><td><b>'+esc(r["if"])+'</b></td><td>'+es2(r.then)+'</td></tr>'}).join('')+'</table></div>');
-  /* seasonal ops preserved here */
-  var se=d.seasonal||{};
-  function ulist(arr){return '<ul style="margin:6px 0 2px 18px;padding:0">'+(arr||[]).map(function(x){return '<li style="margin:5px 0;font-size:13.5px;color:var(--mut)">'+es2(x)+'</li>'}).join('')+'</ul>'}
-  var seBody='';
-  if((se.hurricane||[]).length)seBody+='<p><b>Hurricane playbook</b></p>'+ulist(se.hurricane);
-  if((se.arrival||[]).length)seBody+='<p><b>Arrival checklist (incl. the copper flush)</b></p>'+ulist(se.arrival);
-  if((se.departure||[]).length)seBody+='<p><b>Departure checklist</b></p>'+ulist(se.departure);
-  if(seBody)h+=drawer('Seasonal operations: storm playbook + arrival/departure checklists',seBody);
   h+=endSect();
   root.innerHTML=h;
 }
