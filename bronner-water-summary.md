@@ -24,7 +24,7 @@ This summary is designed to be loaded into Claude or ChatGPT for follow-up quest
 
 ## 3. The drinking-water decision: RO beats Aqualuxe for this house
 
-**Recommended drinking water system: premium under-sink reverse osmosis.**
+**Recommended drinking water system: certified under-sink reverse osmosis.**
 **Named pick: Waterdrop G3P800 (tankless), ~$450–600 + installation — run without its MNR35 remineralizer.**
 **Premium design alternative: Cloud RO** (Wirecutter #1, design/app, best-documented remineralization — but tank-based, and its PFAS/lead are SGS-tested, not certified).
 
@@ -59,8 +59,8 @@ Reasons:
 
 | Component | Action |
 |---|---|
-| Tankless under-sink RO (Waterdrop G3P800) at kitchen, small add-on tank for the fridge/ice line — run without the MNR35 remineralizer | **Choose now, validate with testing** |
-| Whole-house catalytic carbon (chloramine/taste/odor/TTHM) + sediment pre-filter + irrigation/pool bypass | **Choose now, installer to confirm sizing** |
+| Tankless under-sink RO (Waterdrop G3P800) at kitchen, small add-on tank for the fridge/ice line — run without the MNR35 remineralizer | **Buy now** |
+| Whole-house catalytic carbon (chloramine/taste/odor/TTHM) + sediment pre-filter + irrigation/pool bypass | **Choose now, validate with testing** |
 | Smart water shutoff (Flo by Moen) + point leak sensors (water heater, kitchen, fridge line, laundry, baths, filtration, mechanical, outdoor shower if practical) | **Buy now** |
 | ProOne Big+ gravity filter + stored-water baseline | **Buy now** (stock spare elements — brand wind-down risk) |
 | pH neutralizer / softener / corrosion control | **Wait for test results** (expected: none needed) |
