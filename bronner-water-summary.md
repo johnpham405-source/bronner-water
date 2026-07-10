@@ -25,7 +25,8 @@ This is the loadable research summary Michael asked for — paste it into Claude
 ## 3. The drinking-water decision: RO beats Aqualuxe for this house
 
 **Recommended drinking water system: premium under-sink reverse osmosis.**
-**Named pick: Aquasana SmartFlow RO (AQ-SFRO2), ~$360–450 + installation — run without its Stage-4 remineralizer (see below).**
+**Named pick: Waterdrop G3P800 (tankless), ~$450–600 + installation — run without its MNR35 remineralizer.**
+**Premium design alternative: Cloud RO** (Wirecutter #1, design/app, best-documented remineralization — but tank-based, and its PFAS/lead are SGS-tested, not certified).
 
 Reasons:
 1. Michael is not opposed to drinking-water RO — his concern was whole-house RO (which we also recommend against).
@@ -58,7 +59,7 @@ Reasons:
 
 | Component | Action |
 |---|---|
-| Under-sink RO (Aquasana SmartFlow AQ-SFRO2) at kitchen, teed to fridge/ice | **Choose now, validate with testing** |
+| Tankless under-sink RO (Waterdrop G3P800) at kitchen, small add-on tank for the fridge/ice line — run without the MNR35 remineralizer | **Choose now, validate with testing** |
 | Whole-house catalytic carbon (chloramine/taste/odor/TTHM) + sediment pre-filter + irrigation/pool bypass | **Choose now, installer to confirm sizing** |
 | Smart water shutoff (Flo by Moen) + point leak sensors (water heater, kitchen, fridge line, laundry, baths, filtration, mechanical, outdoor shower if practical) | **Buy now** |
 | ProOne Big+ gravity filter + stored-water baseline | **Buy now** (stock spare elements — brand wind-down risk) |
