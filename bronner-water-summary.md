@@ -1,7 +1,7 @@
 # Bronner Residence Water Advisory — Research Summary
 **840 Crescent Beach Road, Vero Beach, FL 32963 · Updated July 9, 2026**
 
-This is the loadable research summary Michael asked for — paste it into Claude or ChatGPT and ask questions against it. It condenses the full interactive report (bronner-water-report.vercel.app). Every certification claim below was verified in the certifier's own database (NSF, WQA) in July 2026; "tested-to" is never called "certified."
+This summary is designed to be loaded into Claude or ChatGPT for follow-up questions. It condenses the full interactive report (bronner-water-report.vercel.app). Every certification claim below was verified in the certifier's own database (NSF, WQA) in July 2026; "tested-to" is never called "certified."
 
 ---
 
@@ -10,8 +10,8 @@ This is the loadable research summary Michael asked for — paste it into Claude
 - Seasonal barrier-island home, ~25 years old, two adults plus guests; sits vacant for meaningful periods.
 - Confirmed on **City of Vero Beach** municipal water (PWSID FL3310206), from the water bill.
 - Suspected copper pipes; blue-green staining where water sits in a tub.
-- Outdoor shower is heavily used (possibly Michael's primary shower, multiple times/day); its plumbing path relative to any future treatment is unconfirmed; it has an unknown-brand screw-on filter.
-- Owners are quality-focused but anti-overbuild, prefer lower plastic contact, and are open to **under-sink drinking-water RO** (Michael's RO concern was specifically whole-house RO).
+- The outdoor shower sees primary-fixture use (multiple times/day); its plumbing path relative to any future treatment is unconfirmed; it has an unknown-brand screw-on filter.
+- Design brief: quality-focused but anti-overbuild, lower plastic contact where practical, under-sink drinking-water RO acceptable (the wastewater objection applies to whole-house RO, which this design rules out).
 
 ## 2. What we know about the water (primary sources)
 
@@ -29,25 +29,25 @@ This is the loadable research summary Michael asked for — paste it into Claude
 **Premium design alternative: Cloud RO** (Wirecutter #1, design/app, best-documented remineralization — but tank-based, and its PFAS/lead are SGS-tested, not certified).
 
 Reasons:
-1. Michael is not opposed to drinking-water RO — his concern was whole-house RO (which we also recommend against).
-2. RO is the only option that also covers dissolved contaminants a carbon block cannot touch: **copper (directly relevant to the tub staining), sodium, nitrate, TDS** — closing every open question before testing even returns.
-3. For PFAS, RO adds a **physical membrane barrier** on top of carbon rather than relying on adsorption capacity alone.
-4. The AQ-SFRO2's claims are **registry-verified (WQA, July 2026)**: NSF/ANSI 42 *aesthetic chloramine* (rare among ROs — it treats what Vero Beach actually uses and protects the membrane); NSF/ANSI 53 *PFOA, PFOS, lead*; NSF/ANSI 58 *copper, nitrate/nitrite, TDS* and more. Non-electric; all-metal faucet.
-5. Caveats: fridge/ice tee is standard tank-RO practice but not documented in Aquasana's manual (installer confirms); arsenic claim assumes free-chlorine water, so treat arsenic as technology-expected here, not certified-as-applied.
+1. RO is the only option that also covers dissolved contaminants a carbon block cannot touch: **copper (directly relevant to the tub staining), sodium, nitrate, TDS** — closing every open question before testing even returns. The familiar wastewater objection applies to whole-house RO (ruled out here), not a drinking tap, where reject water is tens of gallons a week.
+2. For PFAS, RO adds a **physical membrane barrier** on top of carbon rather than relying on adsorption capacity alone.
+3. The G3P800 carries the **most comprehensive certification package in the field**: its Performance Data Sheet shows IAPMO R&T certification against NSF/ANSI 42, 53, 58 & 372, including **certified Total PFAS to a 20-ppt endpoint** (the tightest available — 2,160 ppt challenge, >99%), plus named PFOA/PFOS/PFNA/PFHxS claims and certified lead, copper, arsenic, nitrate, TDS, and THM/VOC reductions. Across Waterdrop's entire lineup, only the G3-series carries NSF/ANSI 53 at all — the X-series (X12/X16), despite more flow and alkaline minerals, is 42/58/372 only, so its PFAS/lead are not certified.
+4. It is **genuinely tankless** — no storage tank, so no water dwelling for hours against a polypropylene liner and rubber bladder (the weak point of every tanked RO), and no tank of standing water through a seasonal vacancy.
+5. Caveats: it needs a power outlet (fine — outage resilience is covered by the gravity filter and stored water); feeding the refrigerator/ice line requires a small (~0.3-gal) add-on pressure tank on that one line; and before purchase, the live IAPMO listing should be opened to confirm Total PFAS as a certified claim, matching the data sheet (some review sites describe that line as tested rather than certified).
 
-**Run it without the remineralizer.** Both SmartFlow SKUs ship with a Stage-4 remineralizer (the SKU difference is the faucet, not the minerals). Aquasana's manuals say it "adds back calcium" — **calcium only** (retail "calcium and magnesium" claims contradict the engineering docs), from a media whose **identity, source, and grade are undisclosed**, with no published amount and no NSF/ANSI 60 cert. For a normal diet, drinking water is not a meaningful mineral source (WHO/Kozisek), and the mineral that literature weights most — magnesium — isn't even added. **Recommendation: skip it** — don't replace the external Stage-4 cartridge (saves ~$63/yr, zero effect on the certified reduction stages upstream). Keep it only if unremineralized RO water tastes too flat/acidic. Get minerals from food.
+**Scope — deliberately separate from the whole-house work.** The drinking-water decision is portable: the same unit can be installed at **all three properties now**. What it does not do: it will not address the bathtub discoloration and it will not protect the home's plumbing — those belong to the whole-house and testing track.
 
-**How it stores water (plastic-contact reality).** The SmartFlow uses a pressurized storage tank (~2.5 gal rated / 3.2 gal total), non-electric. Aquasana **confirms** an all-metal faucet and a stainless outlet port but **does not publish** the tank shell, liner polymer, or bladder material. By universal standard for this tank class, the water chamber is lined with FDA-grade polypropylene and separated from the air charge by a butyl-rubber diaphragm — so stored water likely dwells for hours against PP + rubber (inference, not an Aquasana-stated fact; the delivery tubing is plastic regardless of the metal faucet). The tank doesn't self-flush, so drain on departure and flush 2–3 tank-volumes on return. **If plastic contact is the deciding factor, this tank is the single strongest argument back toward the stainless Multipure Aqualuxe** (a carbon block with no stored water) or a tankless RO (which costs mains power, usually the chloramine claim, and a re-added mini-tank to feed the fridge). To confirm the liner polymer, Aquasana support is 866-662-6885.
+**Remineralization: optional, taste not safety.** The G3P800's optional MNR35 mineralizer sits **outside the certified system boundary**, with undisclosed media and amounts (as with nearly all remin stages — none of the three compared holds NSF/ANSI 60 or publishes mg/L). For a normal diet, drinking water is not a meaningful mineral source (WHO/Kozisek). Recommendation: run without it; if minerals matter, Cloud RO documents its remineralization best (inside its NSF-58 safety boundary, adds Ca/Mg/K). Either way, the ground truth is a **post-installation sample from the final faucet**.
 
-**PFAS certification honesty (applies to both sides):** both the Aqualuxe and the SmartFlow are certified at the 2021-era endpoint (~1,500 ppt challenge reduced to ≤70 ppt). Neither holds the newer 20-ppt "Total PFAS" claim, and **no certification under any standard yet proves reduction to the 4 ppt MCL** (EPA says so itself). These are certification floors; measured performance is typically far better. If a paper 20-ppt claim matters: Pentair FreshPoint GRO-575B states an IAPMO "Total PFAS" certification (manufacturer-stated; registry not independently sighted) but has no chloramine claim.
+**Premium design alternative — Cloud RO.** Wirecutter's #1: design-forward, app-connected, integrated remineralization, NSF/ANSI 58 certified as a system (material-safety tests covering the remin stage). But it is **tank-based** (~2.8-gal tank, 50 GPD — not tankless), and its **PFAS, lead and copper reductions are SGS lab-tested, not certified NSF 53 claims**. Choose it for the ownership experience, accepting tested-not-certified contaminant claims. (Both units are manufactured in China per their listings — not a differentiator.)
 
-**The Multipure Aqualuxe remains the runner-up, not a reject.** It holds an exemplary live NSF listing (chloramine, lead, VOC/TTHM, PFOA/PFOS at the 70-ppt endpoint, microplastics, P231 microbiological), a stainless housing (best low-plastic build), zero wastewater, mineral retention, and one $180/yr cartridge. It has **no claims** for sodium, TDS, nitrate, fluoride, or copper.
+**Runner-up (simpler): Multipure Aqualuxe.** Exemplary live NSF listing (chloramine, lead, VOC/TTHM, PFOA/PFOS at the older 70-ppt endpoint, microplastics, P231), stainless housing, zero waste, mineral retention, one $180/yr cartridge — but **no claims** for sodium, TDS, nitrate, fluoride, or copper. Switch-back condition: testing shows dissolved inorganics all comfortably normal AND mineral retention + zero waste + the stainless build are judged to outrank breadth of coverage.
 
-**Switch-back condition:** if testing shows dissolved inorganics (copper, sodium, nitrate, arsenic, TDS) all comfortably normal AND Michael/Lisa decide mineral retention + zero waste + the stainless build outrank breadth, the Aqualuxe becomes fully defensible again.
+**Dealer white-glove alternative:** Culligan Aquasential Smart RO (Culligan of Vero Beach) or Kinetico K5 — registry-certified PFAS with scheduled service while the home sits empty, at 3–5× the installed cost.
 
-**Dealer white-glove alternative:** Culligan Aquasential Smart RO (Culligan of Vero Beach) or Kinetico K5 — same coverage class at 3–5× installed cost, buying scheduled service while the home sits empty.
+**Dropped:** Aquasana SmartFlow (3.8-star owner rating, plastic storage tank, calcium-only remineralizer from an undisclosed source, older 70-ppt PFAS certification); Waterdrop X-series and Electrolux PureEssence (no NSF/ANSI 53 — PFAS/lead uncertified).
 
-19-factor score: RO 7, Aqualuxe 6, ties 6 — a decision, not a landslide. RO's wins are the health-decisive ones (PFAS mechanism, copper, TDS, nitrate, sodium, fridge/ice, overall confidence under uncertainty); Aqualuxe's wins are simplicity/materials (minerals, no remin, zero waste, plastics, tankless nature, maintenance).
+**PFAS certification honesty:** no certification under any standard yet proves reduction to the 4-ppt MCL (EPA says so itself); these are certification floors, not measured ceilings, and because RO removes PFAS by membrane physics, most competent RO systems would pass if submitted. Certification is verification plus a defined endpoint — and the G3P800 carries the strongest certified package available, which is why it wins on the evidence.
 
 ## 4. Will testing change the decision? No — it tunes the add-ons.
 
@@ -86,7 +86,7 @@ Likeliest driver: **months-long seasonal stagnation**, possibly amplified by chl
 
 **Remedies ladder:** (1) free post-vacancy flush routine (cold taps nearest→farthest, 10–30 min, then hot side; monthly brief run during vacancy if possible); (2) stop drips, clean stains; (3) DZR/PVD fixture swap if one tub; (4) calcite only if tests earn it; (5) repipe only when earned.
 
-**Tub spout filters (Lisa's question):** do not buy as a fix. The slip-on "15-stage" products (Atzeste/Yvelines style) carry zero certifications, ~1 second of media contact at tub flow, no dissolved-metal removal — the stain will not stop. If she wants gentler bathing water today: ~1,000 mg crushed vitamin C neutralizes a full tub's chloramine in minutes (utility-endorsed chemistry, pennies). The whole-house carbon eventually handles every tub and shower anyway.
+**Tub spout filters:** do not buy as a fix. The slip-on "15-stage" products (Atzeste/Yvelines style) carry zero certifications, ~1 second of media contact at tub flow, no dissolved-metal removal — the stain will not stop. If gentler bathing water matters today: ~1,000 mg crushed vitamin C neutralizes a full tub's chloramine in minutes (utility-endorsed chemistry, pennies). The whole-house carbon eventually handles every tub and shower anyway.
 
 ## 7. Outdoor shower plan (a primary fixture, not a footnote)
 
@@ -94,22 +94,21 @@ Likeliest driver: **months-long seasonal stagnation**, possibly amplified by chl
 
 **Shower filter truth:** NSF/ANSI 177 (the only shower-filter standard) covers free chlorine only; **no fixture filter anywhere is certified for chloramine** — ~2 seconds of contact at 2 gpm vs the minutes catalytic carbon needs. The one credible fixture-level chloramine chemistry is vitamin C (ascorbic acid) media — real but consumable-hungry (cartridges last 4–6 weeks; 2–3 under heavy use). Picks if the shower stays untreated: **Sprite High Output (brass)** for durability (IAPMO-certified to 177, chlorine only), **Weddell Duo WD-100** (live NSF-registry listing), or a vitamin-C inline unit for chloramine specifically. Nothing is rated for outdoor UV — shade-mount and replace on a calendar.
 
-## 8. Three-house testing plan
+## 8. Testing plan (per property — testing drives action, not ceremony)
 
-**Best plan — $788/house, $2,364 for three** (Tap Score, prices verified 7/9/2026):
-- Advanced City Water Test $299 — 111 analytes, flushed sample (pH, alkalinity, hardness, TDS, Na, Cl, nitrate/nitrite, sulfate, As, Fe, Mn, flushed Pb/Cu, TTHMs, 44 VOCs, LSI corrosion indices)
-- Lead & Copper Test $55 — first-draw pair at the stained tub's cold tap (6+ hr stagnation per kit instructions), includes on-site pH strip
-- PFAS Water Test $335 — **EPA Method 537.1**, 14 compounds, <2 ppt
-- Coliform & E. coli $99 — post-vacancy microbial check
-- Only gap: HAA5 (in the utility's own data, or the $815 Extended kit). Optional Vero upgrade: "GenX and PFAS" $599 (EPA 533 or equivalent, 25 compounds).
+The drinking-water RO is already decided and portable to all three properties. Testing exists to settle the corrosion questions, size the whole-house work, and verify each installed system. The plan (Tap Score, prices verified 7/9/2026):
 
-**Minimum plan — $329/house, $987 for three:** Essential City $189 + Lead & Copper $55 + Cyclopure PFAS screen $85 (validated to EPA-method requirements but NOT an EPA-certified workflow — screen, not proof). Gives up EPA-method PFAS, TTHMs, VOCs, bacteria.
+- **One Advanced City Water Test per property** — $299 each. The decision panel: 111 analytes, flushed sample (pH, alkalinity, hardness, TDS, Na, Cl, nitrate/nitrite, sulfate, As, Fe, Mn, flushed Pb/Cu, TTHMs, 44 VOCs, LSI corrosion indices). This decides the pH/softener/corrosion add-ons at each property.
+- **One additional Lead & Copper first-draw sample from the Vero Beach bathtub** — $55, at the stained tub's cold tap (6+ hr stagnation per kit instructions), on-site pH strip included. This diagnoses the blue-green staining.
+- **PFAS by EPA Method 537.1, once per distinct water source** — $335 each. Properties on the same utility supply share one result; each distinct source gets its own test.
+- **Post-install verification at each RO faucet** — after installation, one sample from each RO's final faucet (lead & copper at minimum; PFAS at the primary) — expected non-detect. This is the proof the systems work as installed, and it also settles the remineralization question at the tap.
+- Optional add-ons: Coliform & E. coli $99 after a long vacancy; "GenX and PFAS" $599 (EPA 533 or equivalent) for a broader panel at the primary. HAA5 is in the utility's own data. If a property is on a well, swap the city kit for the Advanced Well version — same plan shape.
 
-**Protocol:** live in the house a few days first (don't sample the post-vacancy worst case); first-draw = no water 6–18 hr, first liter, no pre-flush; flushed = run ~5 min; record the pH strip at collection; Sam orders one box set per house. If a house is on a well, swap to the well version of the same kit.
+**Protocol:** live in the house a few days first (don't sample the post-vacancy worst case); first-draw = no water 6–18 hr, first liter, no pre-flush; flushed = run ~5 min; record the pH strip at collection; Sam orders one kit set per property.
 
 **Results that change anything:** pH + copper (calcite/corrosion), hardness (softener), TTHM (carbon urgency), sodium/nitrate/arsenic/TDS (Aqualuxe switch-back), coliform (startup sanitization). Everything else is documentation.
 
-## 9. Plastics, polypropylene, and RO tanks (Michael's deep-dive)
+## 9. Plastics, polypropylene, and RO tanks (deep-dive)
 
 - PP demonstrably sheds microplastics, but ~100× less in cold water than in the boiling-water studies (benchmark: ~0.6M particles/L at 25°C vs ~55M at 95°C). Under-sink = cold application.
 - PP chemical leaching (oligomers, antioxidant byproducts) in cold water sits near/below detection limits.
@@ -130,9 +129,9 @@ Not a filter. It watches flow on the main, learns normal patterns, alerts and au
 
 ## 12. Evidence rules used throughout
 
-1. EPA data → 2. City of Vero Beach CCR → 3. certifier databases (NSF/WQA/IAPMO — exact-model live listings only; "tested to" ≠ certified) → 4. peer-reviewed/extension → 5. manufacturer docs (always labeled) → 6. consumer apps/blogs/reviews/**Oasis Health** (secondary, non-authoritative — per Michael's flag; it never carried decision weight). Certifications are re-verified against live registries the week of purchase.
+1. EPA data → 2. City of Vero Beach CCR → 3. certifier databases (NSF/WQA/IAPMO — exact-model live listings only; "tested to" ≠ certified) → 4. peer-reviewed/extension → 5. manufacturer docs (always labeled) → 6. consumer apps/blogs/reviews/**Oasis Health** (secondary, non-authoritative; it carries no decision weight). Certifications are re-verified against live registries the week of purchase.
 
-## 13. Open questions for Michael and Lisa
+## 13. Open questions
 
 Photo of the tub staining? One tub or several? Hot, cold, or both? Metallic taste? Stains at faucets/drains/grout/toilet tanks? Copper pipes confirmed? Any plumbing replaced? Outdoor shower on the house line? Before or after the future treatment point? Current outdoor filter brand (photo)? Treat outdoor shower as top priority (assumed yes)? Where do you want filtered water (kitchen faucet / dedicated faucet / fridge / ice — all)? Comfortable with under-sink RO for drinking only (assumed yes per the call)? **Is minimizing plastic contact more important than maximum contaminant removal? (the one answer that could flip the pick)** Dealer service plan attractive? Who collects samples at each house? Sam handles kit logistics?
 
