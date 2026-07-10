@@ -303,6 +303,60 @@ function closeEv(){document.getElementById('evsheet').classList.remove('on');doc
 document.getElementById('evscrim').onclick=closeEv;
 
 /* ============ v3 consolidated renderers - 5 tabs, lean, detail-in-drawers ============ */
+
+/* ---- injected visual polish (survives the build; keeps changes in the renderer layer) ---- */
+(function(){var s=document.createElement('style');s.textContent=`
+header{position:relative;overflow:hidden}
+header:before{content:"";position:absolute;right:-70px;top:-54px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle at 32% 30%,rgba(255,255,255,.09),transparent 60%);pointer-events:none}
+header:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:66px;pointer-events:none;background:radial-gradient(140% 66px at 82% 120%,rgba(185,130,47,.22),transparent 66%),radial-gradient(150% 82px at 12% 130%,rgba(35,120,108,.45),transparent 70%)}
+header .wrap{position:relative;z-index:1}
+.slide{margin:26px 0}.sub{margin-bottom:13px}.verdict{padding:16px 18px}
+.flowr .fn .fic{display:block;margin:0 auto 5px;width:24px;height:24px;color:var(--pine3)}
+.flowr .fn.hero .fic{color:#EBD9B4}.flowr .fn.dim .fic{color:var(--na)}
+.figrow{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:4px 0 2px}
+.figart{flex:0 0 auto;width:88px;height:88px;color:var(--pine3)}
+.figrow .figbody{flex:1 1 220px;min-width:0}
+.herofig{display:block;width:100%;max-width:250px;height:auto;color:var(--pine3);margin:0 0 10px}
+@media(max-width:560px){.figart{width:64px;height:64px}}
+`;document.head.appendChild(s);})();
+
+/* ---- inline SVG line-icons (currentColor) ---- */
+function svgIcon(k){var P={
+  drop:'M12 3s6.5 6.6 6.5 11.2A6.5 6.5 0 0 1 12 20.7a6.5 6.5 0 0 1-6.5-6.5C5.5 9.6 12 3 12 3z',
+  shield:'M12 3.2l6.8 2.7v5c0 4.5-2.9 8-6.8 9.9-3.9-1.9-6.8-5.4-6.8-9.9v-5L12 3.2z',
+  filter:'M4 5h16l-6.2 7.4V19l-3.6 1.8v-8.4L4 5z',
+  home:'M4 11.5 12 4l8 7.5M6.2 10v9h11.6v-9',
+  fridge:'M7 3h10a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM6 10.6h12M9.2 6.6v2.4M9.2 13v3',
+  gauge:'M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 8 3.2-2.2'
+};var d=P[k];if(!d)return '';
+  return '<svg class="fic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+d+'"/></svg>';}
+
+/* ---- flow diagram with per-node icons ---- */
+function flowViz(stages){var h='<div class="flowr">';
+  stages.forEach(function(s,i){h+='<span class="funit"><span class="fn '+(s.cls||'')+'">'+(s.ic?svgIcon(s.ic):'')+'<b>'+esc(s.t)+'</b><small>'+esc(s.d||'')+'</small></span>'+(i<stages.length-1?'<span class="fa">&#8594;</span>':'')+'</span>';});
+  return h+'</div>';}
+
+/* ---- hero emblem: a filtration droplet over a wave (decorative) ---- */
+function heroEmblem(){return '<svg class="herofig" viewBox="0 0 260 116" fill="none" aria-hidden="true">'
+  +'<g stroke="currentColor" stroke-width="1.5" opacity=".9">'
+  +'<path d="M60 14c0 0 26 26 26 46a26 26 0 0 1-52 0c0-20 26-46 26-46z" fill="rgba(30,107,96,.06)"/>'
+  +'<path d="M60 40c0 0 12 12 12 22a12 12 0 0 1-24 0c0-10 12-22 12-22z" opacity=".55"/>'
+  +'</g>'
+  +'<g stroke="currentColor" stroke-width="1.4" opacity=".38" fill="none">'
+  +'<path d="M104 44h150M104 58h150M104 72h120"/></g>'
+  +'<g stroke="var(--gold)" stroke-width="2" fill="none" opacity=".9">'
+  +'<path d="M8 98c22-14 44-14 66 0s44 14 66 0 44-14 66 0 44 14 46 0" stroke-linecap="round"/></g>'
+  +'</svg>';}
+
+/* ---- small under-sink tankless RO unit illustration ---- */
+function roUnitArt(){return '<svg class="figart" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+  +'<rect x="20" y="30" width="42" height="54" rx="7" fill="rgba(30,107,96,.06)"/>'
+  +'<line x1="30" y1="44" x2="52" y2="44"/><line x1="30" y1="54" x2="52" y2="54"/><line x1="30" y1="64" x2="46" y2="64"/>'
+  +'<path d="M62 40h10a8 8 0 0 1 8 8v6"/><path d="M80 54v6a6 6 0 0 1-12 0"/>'
+  +'<path d="M74 66c0 0 4 4.5 4 8a4 4 0 0 1-8 0c0-3.5 4-8 4-8z" fill="rgba(185,130,47,.12)" stroke="var(--gold)"/>'
+  +'<line x1="26" y1="30" x2="26" y2="22"/><circle cx="26" cy="18" r="4"/>'
+  +'</svg>';}
+
 function es2(s){return esc(pscrub(s))}
 function labelPill(t){var l=String(t||'').toLowerCase();
   if(/^buy now|^set up now/.test(l))return pill(t,'good');
@@ -321,8 +375,8 @@ function summaryDeck(){
   var S=[], h='';
 
   /* 1 - WHAT TO DO NOW */
-  h=verdict('Treat the drinking tap with reverse osmosis; protect the house; validate a short list by testing',
-    'Install a certified under-sink RO for drinking and cooking (it removes PFAS, lead, copper and the dissolved contaminants a carbon block cannot), whole-house catalytic carbon for chloramine and byproducts, and a smart shutoff for the vacancy months. No whole-house RO and no whole-house PFAS media - those are drinking-and-cooking exposures, treated at the tap you drink from.','pine');
+  h=verdict('Treat the drinking tap with RO; protect the house; validate the add-ons by testing',
+    'A certified under-sink RO for drinking and cooking, whole-house catalytic carbon for chloramine and byproducts, and an automatic shutoff for the vacancy months. No whole-house RO or PFAS media - PFAS and lead are treated at the tap you drink from.','pine');
   h+='<div class="cards4">'
     + statCard({k:'Buy now',v:'Shutoff + sensors, gravity filter, test kits',s:'no results needed',cls:'good'})
     + statCard({k:'Choose now, validate',v:'Under-sink RO + whole-house carbon',s:'order after the kits return',cls:''})
@@ -344,7 +398,7 @@ function summaryDeck(){
   /* 3 - THE PICK + PRICE DOESN'T BUY CLEANER */
   var dd=v.ddecision||{};
   h=verdict('Reverse osmosis at the drinking tap - and price does not buy cleaner water',
-    'Across ~20 RO systems, certified contaminant removal did not scale with price: a ~$450 unit leads on certified coverage, the $6,000-14,000 dealer systems are the same coverage class (you pay for service, not cleaner water), and the most expensive category - estate whole-house RO - carries no complete-system PFAS certification at all.','good');
+    'Across ~20 RO systems, certified removal did not track price: the certified-coverage leader is a mid-priced unit, the $6,000-14,000 dealer systems are the same coverage class, and the most expensive category - estate whole-house RO - carries no complete-system PFAS certification at all.','good');
   h+='<div class="cards2">'
     +'<div class="card"><h4>The pick</h4><p><b>Waterdrop G3P800</b> - tankless, and the most comprehensively certified of the ~20 systems (IAPMO NSF 42/53/58/372, including certified Total PFAS to a 20 ppt endpoint, plus lead and copper). <b>Cloud RO</b> is the premium design/app/remineralization alternative (tank-based; its PFAS is lab-tested, not certified).</p></div>'
     +'<div class="card"><h4>Why RO over the simpler carbon block</h4><p>The Multipure Aqualuxe (stainless carbon block) is the strong runner-up, but only RO also removes copper, sodium, nitrate and TDS - closing every open question before testing returns.</p></div>'
@@ -397,9 +451,10 @@ function summaryDeck(){
 function renderSummary(root){
   var S=summaryDeck();
   var h='<div class="slide">'
-    +'<p class="eyebrow">Updated after the July 2026 walkthrough call</p>'
+    +heroEmblem()
+    +'<p class="eyebrow">Water Strategy Advisory &#183; July 2026</p>'
     +'<h2 class="h1s">The Bronner water advisory, in brief</h2>'
-    +'<p class="sub">What to buy now, what waits for testing, and the one recommendation that changed. Read straight through, or <button class="present-launch" onclick="startPresent()">present it one section at a time &#9654;</button></p>'
+    +'<p class="sub">What to buy now, and what waits for testing. Read straight through, or <button class="present-launch" onclick="startPresent()">present it section by section &#9654;</button></p>'
     +'</div>';
   h+=S.map(function(s){return '<div class="slide"><p class="eyebrow">'+esc(s.eyebrow)+'</p><h2 class="h1s">'+esc(s.title)+'</h2>'+s.html+'</div>'}).join('');
   root.innerHTML=h;
@@ -414,12 +469,12 @@ function renderPlan(root){
   /* 1 - recommended architecture */
   h+=sect('The plan','One recommended design, honestly priced',
     'Every line carries an action label, so nothing hides behind "it depends": buy now, choose now and validate, wait for tests, or do not buy.');
-  h+=flowRow([
-    {t:'City main',d:'municipal supply'},
-    {t:'Sediment + shutoff',d:'protection while vacant'},
-    {t:'Whole-house carbon',d:'chloramine + byproducts, house-wide',cls:'hero'},
-    {t:'House plumbing',d:'showers, tubs, laundry'},
-    {t:'Under-sink RO',d:'kitchen + fridge + ice',cls:'hero'}
+  h+=flowViz([
+    {t:'City main',d:'municipal supply',ic:'drop'},
+    {t:'Sediment + shutoff',d:'protection while vacant',ic:'shield'},
+    {t:'Whole-house carbon',d:'chloramine + byproducts',cls:'hero',ic:'filter'},
+    {t:'House plumbing',d:'showers, tubs, laundry',ic:'home'},
+    {t:'Under-sink RO',d:'kitchen + fridge + ice',cls:'hero',ic:'drop'}
   ]);
   h+='<p style="margin:10px 0">'+labelPill('Buy now')+' '+labelPill('Choose now, validate with testing')+' '+labelPill('Wait for test results')+' '+labelPill('Do not buy')+' '+labelPill('Plumber to inspect')+'</p>';
   ds.forEach(function(D){
@@ -501,7 +556,9 @@ function renderDrinking(root){
   h+=verdict(esc(dd.headline||''),es2(dd.verdict||''),'good');
   if(dd.scope)h+='<p class="note"><b>Scope.</b> '+es2(dd.scope)+'</p>';
   h+='<div class="cards2">'
-    +'<div class="card" style="border-color:var(--pine3)"><h4>The pick: '+esc(dd.namedPick||'')+'</h4><p>'+es2(dd.pickWhy||'')+'</p>'+drawer('Two honest caveats','<p>'+es2(dd.pickCaveats||'')+'</p>')+'</div>'
+    +'<div class="card" style="border-color:var(--pine3)"><h4>The pick: '+esc(dd.namedPick||'')+'</h4>'
+      +'<div class="figrow">'+roUnitArt()+'<div class="figbody"><p>'+es2(dd.pickWhy||'')+'</p></div></div>'
+      +drawer('Three honest caveats','<p>'+es2(dd.pickCaveats||'')+'</p>')+'</div>'
     +'<div class="card"><h4>The premium design alternative</h4><p>'+es2(dd.altPremium||'')+'</p></div>'
     +'</div>';
   h+=drawer('The other alternatives, and what we dropped',
