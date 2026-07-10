@@ -94,19 +94,20 @@ Likeliest driver: **months-long seasonal stagnation**, possibly amplified by chl
 
 **Shower filter truth:** NSF/ANSI 177 (the only shower-filter standard) covers free chlorine only; **no fixture filter anywhere is certified for chloramine** — ~2 seconds of contact at 2 gpm vs the minutes catalytic carbon needs. The one credible fixture-level chloramine chemistry is vitamin C (ascorbic acid) media — real but consumable-hungry (cartridges last 4–6 weeks; 2–3 under heavy use). Picks if the shower stays untreated: **Sprite High Output (brass)** for durability (IAPMO-certified to 177, chlorine only), **Weddell Duo WD-100** (live NSF-registry listing), or a vitamin-C inline unit for chloramine specifically. Nothing is rated for outdoor UV — shade-mount and replace on a calendar.
 
-## 8. Testing plan (per property — testing drives action, not ceremony)
+## 8. Testing plan — scoped to decisions, not volume
 
-The drinking-water RO is already decided and portable to all three properties. Testing exists to settle the corrosion questions, size the whole-house work, and verify each installed system. The plan (Tap Score, prices verified 7/9/2026):
+**The RO systems can be purchased now.** Testing is not needed to decide whether to install under-sink RO. Testing is needed to determine whether any property *also* requires whole-house carbon filtration, softening, corrosion control, pH correction, or localized plumbing repairs.
 
-- **One Advanced City Water Test per property** — $299 each. The decision panel: 111 analytes, flushed sample (pH, alkalinity, hardness, TDS, Na, Cl, nitrate/nitrite, sulfate, As, Fe, Mn, flushed Pb/Cu, TTHMs, 44 VOCs, LSI corrosion indices). This decides the pH/softener/corrosion add-ons at each property.
-- **One additional Lead & Copper first-draw sample from the Vero Beach bathtub** — $55, at the stained tub's cold tap (6+ hr stagnation per kit instructions), on-site pH strip included. This diagnoses the blue-green staining.
-- **PFAS by EPA Method 537.1, once per distinct water source** — $335 each. Properties on the same utility supply share one result; each distinct source gets its own test.
-- **Post-install verification at each RO faucet** — after installation, one sample from each RO's final faucet (lead & copper at minimum; PFAS at the primary) — expected non-detect. This is the proof the systems work as installed, and it also settles the remineralization question at the tap.
-- Optional add-ons: Coliform & E. coli $99 after a long vacancy; "GenX and PFAS" $599 (EPA 533 or equivalent) for a broader panel at the primary. HAA5 is in the utility's own data. If a property is on a well, swap the city kit for the Advanced Well version — same plan shape.
+**Order now — before installing filtration** (Tap Score, prices verified 7/9/2026):
+- **Three Advanced City Water Tests, one per property** — $299 each. Collect each from an **untreated cold-water kitchen faucet**. Primary baseline for copper, lead, pH, hardness, alkalinity, minerals, metals, and chlorine byproducts — the factors that could justify whole-house treatment.
+- **One Lead & Copper Test at the affected bathtub only** — $55. *Not* for every property (the Advanced test already measures lead/copper at the kitchen). Purpose: compare the bathtub against that property's main sample — similar = property-wide chemistry; worse at the tub = plumbing local to the tub.
+- **PFAS, by water source** — $335 each (Tap Score, 14 compounds, EPA Method 537.1). PFAS is *not* in the Advanced test. Different utilities/sources → one PFAS test per property; same source → one untreated baseline is generally sufficient.
 
-**Protocol:** live in the house a few days first (don't sample the post-vacancy worst case); first-draw = no water 6–18 hr, first liter, no pre-flush; flushed = run ~5 min; record the pH strip at collection; Sam orders one kit set per property.
+**After the Waterdrop systems are installed:** test the finished drinking water from each RO faucet — especially for **PFAS** — to verify the actual installation and final output.
 
-**Results that change anything:** pH + copper (calcite/corrosion), hardness (softener), TTHM (carbon urgency), sodium/nitrate/arsenic/TDS (Aqualuxe switch-back), coliform (startup sanitization). Everything else is documentation.
+**Collection:** Advanced test from an untreated cold kitchen faucet (run to stable temp, then fill). Bathtub Lead & Copper = first-draw (no water 6–18 hr, first liter, no pre-flush). Record the pH strip at collection. Don't sample straight out of a long vacancy — run the house at normal use for a few days first.
+
+**Do not:** order a separate lead-and-copper kit at the same faucet as the Advanced test; buy a pH neutralizer, softener, or any whole-house equipment until the baseline results are reviewed.
 
 ## 9. Plastics, polypropylene, and RO tanks (deep-dive)
 
