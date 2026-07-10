@@ -120,9 +120,10 @@ Likeliest driver: **months-long seasonal stagnation**, possibly amplified by chl
 **Order now — before installing filtration** (Tap Score, prices verified 7/9/2026):
 - **Three Advanced City Water Tests, one per property** — $299 each. Collect each from an **untreated cold-water kitchen faucet**. Primary baseline for copper, lead, pH, hardness, alkalinity, minerals, metals, and chlorine byproducts — the factors that could justify whole-house treatment.
 - **One Lead & Copper Test at the affected bathtub only** — $55. *Not* for every property (the Advanced test already measures lead/copper at the kitchen). Purpose: compare the bathtub against that property's main sample — similar = property-wide chemistry; worse at the tub = plumbing local to the tub.
-- **PFAS, by water source** — $335 each (Tap Score, 14 compounds, EPA Method 537.1). PFAS is *not* in the Advanced test. Different utilities/sources → one PFAS test per property; same source → one untreated baseline is generally sufficient.
 
-**After the Waterdrop systems are installed:** test the finished drinking water from each RO faucet — especially for **PFAS** — to verify the actual installation and final output.
+**No separate PFAS test up front.** The Waterdrop G3P800 is certified for PFAS reduction, so the baseline does not need an incoming PFAS number to justify the RO — the RO is already the answer. If you want confirmation, test the finished RO water for PFAS *after* install (below), which measures what actually matters: the water coming out of the tap you drink from.
+
+**After the Waterdrop systems are installed:** test the finished drinking water from each RO faucet to verify the installation and final output. This is also the point to run an **optional PFAS test** if you want to confirm the certified reduction on your own water (Tap Score PFAS, ~$335, 14 compounds, EPA Method 537.1).
 
 **Collection:** Advanced test from an untreated cold kitchen faucet (run to stable temp, then fill). Bathtub Lead & Copper = first-draw (no water 6–18 hr, first liter, no pre-flush). Record the pH strip at collection. Don't sample straight out of a long vacancy — run the house at normal use for a few days first.
 
