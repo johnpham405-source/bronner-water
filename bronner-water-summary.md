@@ -5,6 +5,25 @@ This summary is designed to be loaded into Claude or ChatGPT for follow-up quest
 
 ---
 
+## Product & test-kit links (all verified live, July 2026)
+
+**Order now — one per property unless noted:**
+- Waterdrop G3P800 RO (the pick): https://www.waterdropfilter.com/products/remineralization-reverse-osmosis-system-wd-g3p800 — also on Amazon Prime
+- Waterdrop PMT pressure tank (per fridge/ice line): https://www.waterdropfilter.com/products/small-water-pressure-tank-for-tankless-reverse-osmosis-wd-pmt
+- Advanced City Water Test (one per property): https://mytapscore.com/products/advanced-city-water-test
+- Lead & Copper Test (Lisa's bathtub only): https://mytapscore.com/products/lead-and-copper-water-test
+- Flo by Moen smart shutoff + leak sensors: https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff
+- ProOne Big+ gravity filter: https://prooneusa.com/product/big-plus/
+
+**Alternatives referenced below:**
+- Cloud RO (premium design alternative): https://www.cloudwaterfilters.com/buy/cloud-ro
+- Multipure Aqualuxe (carbon-block runner-up): https://www.multipure.com/products/drinking-water-systems/aqualuxe/
+- Pentair FreshPoint GRO (certified RO from a major brand): https://www.pentair.com/en-us/water-softening-filtration/under-sink/products/freshpoint-4-stage-undercounter-reverse-osmosis-system.html
+- Culligan Aquasential Smart RO (dealer white-glove): https://www.culligan.com/product/culligan-aquasential-smart-ro-drinking-water-system
+- Kinetico K5 (dealer white-glove): https://www.kinetico.com/drinking-water-filtration-systems/kinetico-k5-drinking-water-station-with-voc-guard/
+
+---
+
 ## 1. The situation
 
 - Seasonal barrier-island home, ~25 years old, two adults plus guests; sits vacant for meaningful periods.
@@ -25,7 +44,7 @@ This summary is designed to be loaded into Claude or ChatGPT for follow-up quest
 ## 3. The drinking-water decision: RO beats Aqualuxe for this house
 
 **Recommended drinking water system: certified under-sink reverse osmosis.**
-**Named pick: Waterdrop G3P800 (tankless), ~$450–600 + installation — run without its MNR35 remineralizer.**
+**Named pick: Waterdrop G3P800 (tankless), ~$450–600 + installation — run without its MNR35 remineralizer.** ([product page](https://www.waterdropfilter.com/products/remineralization-reverse-osmosis-system-wd-g3p800))
 **Premium design alternative: Cloud RO** (Wirecutter #1, design/app, best-documented remineralization — but tank-based, and its PFAS/lead are SGS-tested, not certified).
 
 Reasons:
