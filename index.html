@@ -765,15 +765,62 @@ function renderEvidence(root){
 
   root.innerHTML=h;
 
-  /* 3 - legacy evidence body (library, corrections, method, oasis methodology) */
-  var holder=document.createElement('div');
-  renderEvidenceLegacy(holder);
-  while(holder.firstChild)root.appendChild(holder.firstChild);
-
-  /* 4 - appendix: preserved research */
+  /* 3 - research archive: everything that backs the decision, kept collapsed */
   var app=document.createElement('div'); var ah='';
-  ah+=sect('Appendix','Preserved research from the prior passes',
-    'Nothing was deleted in the consolidation - the full prior analyses live here.');
+  ah+=sect('Research archive','The full evidence base, on demand',
+    'The recommendation rests on these; they are kept here so the tab stays scannable. Open any drawer for the detail.');
+
+  /* evidence library (was a large visible table) */
+  var ev=(d.evidence||[]);
+  function evHost(u){var m=String(u||'').match(/^https?:\/\/([^\/?#]+)/);return m?m[1].replace(/^www\./,''):'link'}
+  function evTier(t){var s=String(t||'').replace(/\s/g,'');var cls=s==='T1'?'good':(s==='T2'?'info':(s==='T3'?'warn':'na'));return pill(t||'-',cls)}
+  if(ev.length)ah+=drawer('Evidence library '+pill(ev.length+' sources','na')+' <span style="font-weight:400;color:var(--mut)">&nbsp;regulators, certifiers, peer-reviewed - fetched &amp; audited July 2026</span>',
+    '<div class="scrollx"><table class="dtx"><tr><th>ID</th><th>Claim</th><th>Source</th><th>Tier</th><th>Link</th></tr>'
+    +ev.map(function(e){return '<tr><td>'+esc(e.id||'')+'</td><td>'+esc(e.claim||'')+'</td><td>'+esc(e.org||'')+'</td><td>'+evTier(e.tier)+'</td><td>'+(e.url?chip(evHost(e.url),e.url,'ev'):'')+'</td></tr>'}).join('')+'</table></div>');
+
+  /* certification grading + weighting (was a visible section) */
+  var hier=(d.certHierarchy||[]);
+  ah+=drawer('How we grade a claim, and how the decision weights out',
+    (hier.length?'<div class="cards2">'+hier.map(function(t){return '<div class="card"><h4>'+pill(t.t,t.cls||'na')+'</h4><p>'+esc(t.d)+'</p></div>'}).join('')+'</div><p class="note">Only Tier 1 - certified for the exact model and contaminant - counts as proof.</p>':'')
+    +'<p style="margin-top:10px"><b>Weighting past the certification gate:</b></p>'
+    +'<div class="kv"><b>Certification depth &amp; scope</b><span>~40%</span></div>'
+    +'<div class="kv"><b>Fit to this home (seasonal, no-power, corrosion, waste, plastic)</b><span>~25%</span></div>'
+    +'<div class="kv"><b>Coverage of THIS water\'s contaminants</b><span>~20%</span></div>'
+    +'<div class="kv"><b>Reliability &amp; service (owner signal, usability only)</b><span>~15%</span></div>'
+    +'<p class="note">A system not certified for PFAS and lead is disqualified regardless of other scores. Cost is a tiebreaker, not a scored factor.</p>');
+
+  /* Oasis cross-check, compressed from a full visible section to one drawer */
+  var oa=(d.oasis||{});
+  if(oa.what){
+    var ob='<p>'+esc(oa.what)+'</p>';
+    if(oa.crossCheck&&oa.crossCheck.body)ob+='<p><b>'+esc(oa.crossCheck.headline||'Cross-check')+'.</b> '+esc(oa.crossCheck.body)+'</p>';
+    if(oa.whyOurs&&oa.whyOurs.intro)ob+='<p>'+esc(oa.whyOurs.intro)+'</p>';
+    if((oa.divergences||[]).length)ob+='<p style="margin-top:8px"><b>Where the two methods diverge:</b></p>'+(oa.divergences||[]).map(function(x){return '<div class="kv"><b>'+esc(x.t)+'</b><span>'+esc(x.d)+'</span></div>'}).join('');
+    ob+='<p class="note">Oasis carries zero formal weight here - a cross-check only. Source: oasishealth.app, captured July 2026.</p>';
+    ah+=drawer('Cross-check vs Oasis Health '+pill('no decision weight','na'),ob);
+  }
+
+  /* corrections adopted before publication (was visible steps) */
+  var corr=(d.corrections||[]);
+  if(corr.length)ah+=drawer('Corrections adopted before publication '+pill(corr.length,'na'),
+    steps(corr.map(function(c){return {t:pscrub(c.t),d:es2(c.d)}})));
+
+  /* open items before purchase (was 'Still unresolved') */
+  var unres=(d.unresolved||[]), miss=(d.missingInfo||[]);
+  if(unres.length){
+    var ub='<div class="cards2">'+unres.map(function(u){return '<div class="card"><h4>'+esc(u.t)+'</h4><p>'+esc(u.s)+'</p></div>'}).join('')+'</div>';
+    if(miss.length)ub+='<p style="margin-top:8px"><b>What would close these:</b> '+miss.map(function(x){return esc(String(x))}).join(' &#183; ')+'</p>';
+    ah+=drawer('Open items to confirm before purchase '+pill(unres.length,'warn'),ub);
+  }
+
+  /* how the research was run (was 'Method') */
+  ah+=drawer('How this research was run',
+    steps([
+      {n:1,t:'Utility & regulatory records',d:'CCR, SDWIS, UCMR5, the Lead and Copper Rule, EPA/FDEP data for the confirmed PWSID.'},
+      {n:2,t:'Certifier databases',d:'NSF, WQA and IAPMO listings, sighted per exact model - the only proof of a product claim.'},
+      {n:3,t:'Adversarial verification',d:'Every load-bearing claim challenged by an independent pass; corrections adopted before publication.'},
+      {n:4,t:'Owner forums & reviews',d:'Reddit and review sites for usability signal only - never as evidence a product works.'}
+    ]));
 
   /* open questions + checklist (from Follow-ups) */
   if((v.openQuestions||[]).length)ah+=drawer('Open questions ('+v.openQuestions.length+')',
