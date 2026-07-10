@@ -14,6 +14,7 @@ This summary is designed to be loaded into Claude or ChatGPT for follow-up quest
 - Lead & Copper Test (Lisa's bathtub only): https://mytapscore.com/products/lead-and-copper-water-test
 - Flo by Moen smart shutoff + leak sensors: https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff
 - ProOne Big+ gravity filter: https://prooneusa.com/product/big-plus/
+- Sonaki vitamin C shower filter (outdoor shower, if on a separate line): https://www.sonaki.com/products/sonaki-stream-handheld-vitamin-c-shower-chlorine-filter
 
 **Alternatives referenced below:**
 - Cloud RO (premium design alternative): https://www.cloudwaterfilters.com/buy/cloud-ro
@@ -84,7 +85,7 @@ Reasons:
 | ProOne Big+ gravity filter + stored-water baseline | **Buy now** (stock spare elements — brand wind-down risk) |
 | pH neutralizer / softener / corrosion control | **Wait for test results** (expected: none needed) |
 | Tub spout filter | **Do not buy** |
-| Outdoor shower filter | **Plumber to inspect first** |
+| Outdoor shower (if on a separate line) | **Vitamin C filter (Sonaki) now; re-route onto treated line later** |
 
 Also defined: a **minimal health-first design** (~$800–1,500: certified drinking system + test kits only) and a **premium comfort/resilience design** (~$8,000–16,000: dealer-managed RO + carbon + full protection + outdoor-shower re-route + service plan).
 
@@ -109,9 +110,11 @@ Likeliest driver: **months-long seasonal stagnation**, possibly amplified by chl
 
 ## 7. Outdoor shower plan (a primary fixture, not a footnote)
 
-1. Confirm it's on the potable house line; 2. Map it against the future treatment location (plumber, same visit as the install quote); 3. Check hot side separately; 4. Photograph + replace the unknown screw-on filter regardless; 5. **If downstream of the carbon → no filter needed**; 6. If upstream/bypassed → re-route onto the treated line (preferred, usually a modest job) or fit a dedicated filter with honest expectations; 7. Verify with total-chlorine test strips afterward.
+**Recommendation (Michael believes it's a separate line):** if the outdoor shower runs on its own line, it carries the City's untreated, chloraminated water — so the right shower-head filter is a **vitamin C (ascorbic acid) unit, the Sonaki** (handheld [product page](https://www.sonaki.com/products/sonaki-stream-handheld-vitamin-c-shower-chlorine-filter) — best for a beach shower — or the fixed [Lotus head](https://www.sonaki.com/products/sonaki-vitamin-c-lotus-showerhead)). This can go in now without waiting on the plumber.
 
-**Shower filter truth:** NSF/ANSI 177 (the only shower-filter standard) covers free chlorine only; **no fixture filter anywhere is certified for chloramine** — ~2 seconds of contact at 2 gpm vs the minutes catalytic carbon needs. The one credible fixture-level chloramine chemistry is vitamin C (ascorbic acid) media — real but consumable-hungry (cartridges last 4–6 weeks; 2–3 under heavy use). Picks if the shower stays untreated: **Sprite High Output (brass)** for durability (IAPMO-certified to 177, chlorine only), **Weddell Duo WD-100** (live NSF-registry listing), or a vitamin-C inline unit for chloramine specifically. Nothing is rated for outdoor UV — shade-mount and replace on a calendar.
+**Why vitamin C specifically:** Vero Beach disinfects with chloramine, and the usual "chlorine" shower media (KDF, carbon, calcium sulfite — including the NSF/ANSI 177-certified units like Sprite or Weddell) barely touches chloramine at shower flow (~2 seconds of contact). Vitamin C neutralizes chloramine stoichiometrically in that window and is EPA-recognized as a dechlorination agent. No shower filter anywhere is *certified* for chloramine (certification stops at free chlorine), and vitamin C cartridges deplete fast (roughly monthly, sooner under heavy daily use) — stock them and change on a calendar; shade-mount the plastic housing.
+
+**Confirm + permanent option:** a 30-second total-chlorine test-strip check at the outdoor shower vs an indoor tap confirms the line is separate; photograph and bin the existing unknown screw-on filter (chlorine-only, exhausted by default). Re-routing the shower onto the treated whole-house line (once the carbon is in) removes the filter chore permanently — optional, price it in the install quote, not blocking.
 
 ## 8. Testing plan — scoped to decisions, not volume
 
