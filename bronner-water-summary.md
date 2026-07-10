@@ -14,7 +14,7 @@ This summary is designed to be loaded into Claude or ChatGPT for follow-up quest
 - Lead & Copper Test (Lisa's bathtub only): https://mytapscore.com/products/lead-and-copper-water-test
 - Flo by Moen smart shutoff + leak sensors: https://shop.moen.com/products/flo-smart-water-monitor-and-shutoff
 - ProOne Big+ gravity filter: https://prooneusa.com/product/big-plus/
-- Sonaki vitamin C shower filter (outdoor shower, if on a separate line): https://www.sonaki.com/products/sonaki-stream-handheld-vitamin-c-shower-chlorine-filter
+- Sonaki vitamin C shower filter (outdoor shower — interim stopgap only; the recommended fix is treating the line): https://www.sonaki.com/products/sonaki-stream-handheld-vitamin-c-shower-chlorine-filter
 
 **Alternatives referenced below:**
 - Cloud RO (premium design alternative): https://www.cloudwaterfilters.com/buy/cloud-ro
@@ -85,7 +85,7 @@ Reasons:
 | ProOne Big+ gravity filter + stored-water baseline | **Buy now** (stock spare elements — brand wind-down risk) |
 | pH neutralizer / softener / corrosion control | **Wait for test results** (expected: none needed) |
 | Tub spout filter | **Do not buy** |
-| Outdoor shower (if on a separate line) | **Vitamin C filter (Sonaki) now; re-route onto treated line later** |
+| Outdoor shower (if on a separate line) | **Treat the line: re-route onto whole-house carbon, or dedicated catalytic-carbon unit; vitamin-C shower head interim only** |
 
 This is the single recommended design; earlier minimal and premium-tier variants have been dropped now that this is the chosen path.
 
@@ -108,13 +108,16 @@ Likeliest driver: **months-long seasonal stagnation**, possibly amplified by chl
 
 **Tub spout filters:** do not buy as a fix. The slip-on "15-stage" products (Atzeste/Yvelines style) carry zero certifications, ~1 second of media contact at tub flow, no dissolved-metal removal — the stain will not stop. If gentler bathing water matters today: ~1,000 mg crushed vitamin C neutralizes a full tub's chloramine in minutes (utility-endorsed chemistry, pennies). The whole-house carbon eventually handles every tub and shower anyway.
 
-## 7. Outdoor shower plan (a primary fixture, not a footnote)
+## 7. Outdoor shower plan (treat the line, not the shower head)
 
-**Recommendation (Michael believes it's a separate line):** if the outdoor shower runs on its own line, it carries the City's untreated, chloraminated water — so the right shower-head filter is a **vitamin C (ascorbic acid) unit, the Sonaki** (handheld [product page](https://www.sonaki.com/products/sonaki-stream-handheld-vitamin-c-shower-chlorine-filter) — best for a beach shower — or the fixed [Lotus head](https://www.sonaki.com/products/sonaki-vitamin-c-lotus-showerhead)). This can go in now without waiting on the plumber.
+**Recommendation (budget open):** treat the line feeding the outdoor shower rather than screwing a filter onto the shower arm. A shower-head filter is physics-capped — at ~2 gpm the water touches the media for only 1–2 seconds, so nothing at the shower head (vitamin C, KDF, or carbon) does high-level filtration on chloramine — and no shower filter of any kind is rated for outdoor sun/weather (they're indoor plastic/resin housings). Catalytic carbon, given real contact time on the line, actually *decomposes* chloramine into chloride and nitrogen.
 
-**Why vitamin C specifically:** Vero Beach disinfects with chloramine, and the usual "chlorine" shower media (KDF, carbon, calcium sulfite — including the NSF/ANSI 177-certified units like Sprite or Weddell) barely touches chloramine at shower flow (~2 seconds of contact). Vitamin C neutralizes chloramine stoichiometrically in that window and is EPA-recognized as a dechlorination agent. No shower filter anywhere is *certified* for chloramine (certification stops at free chlorine), and vitamin C cartridges deplete fast (roughly monthly, sooner under heavy daily use) — stock them and change on a calendar; shade-mount the plastic housing.
+**Hierarchy:**
+1. **Re-route the outdoor shower onto the whole-house catalytic carbon** (recommended). Once that system is in, tee the shower off the treated side: highest performance, zero fixture maintenance, nothing exposed on the wall. A modest plumbing job — worth doing with budget open.
+2. **Dedicated catalytic-carbon unit on the shower's own line** (if re-route is impractical): a point-of-entry catalytic-carbon cartridge (4.5″×20″) with a sediment pre-filter, or a small backwashing catalytic-carbon tank, in a weatherproof enclosure; add UV only if stagnation is ever a concern. Real chloramine removal, ~yearly service.
+3. **Vitamin C shower-head filter (Sonaki)** — *interim only*, if someone wants something the same day before the plumbing is done. The only chemistry that works in ~2 seconds, but not outdoor-rated, not certified for chloramine, cartridges deplete ~monthly. A stopgap, not the premium fix.
 
-**Confirm + permanent option:** a 30-second total-chlorine test-strip check at the outdoor shower vs an indoor tap confirms the line is separate; photograph and bin the existing unknown screw-on filter (chlorine-only, exhausted by default). Re-routing the shower onto the treated whole-house line (once the carbon is in) removes the filter chore permanently — optional, price it in the install quote, not blocking.
+**Confirm:** a 30-second total-chlorine test-strip check at the outdoor shower vs an indoor tap confirms the line is separate; remove the existing unknown screw-on filter regardless (chlorine-only, exhausted by default). Re-route vs dedicated-carbon is priced in the install quote.
 
 ## 8. Testing plan — scoped to decisions, not volume
 
