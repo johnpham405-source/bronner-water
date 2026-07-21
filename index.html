@@ -453,7 +453,7 @@ function summaryDeck(){
 }
 
 /* ===== AI export: open the research data in ChatGPT/Claude, or copy it ===== */
-var AI_SUMMARY_URL='https://bronner-water-report.vercel.app/research-summary.html';
+var AI_SUMMARY_URL='https://bronner-water-report.vercel.app/research-summary';
 var AI_PROMPT='I am reviewing a completed water-quality advisory for three Florida properties (Vero Beach barrier island; City of Vero Beach supply with a PFOS exceedance and chloramine). Before answering anything, fetch and read the full research summary at '+AI_SUMMARY_URL+' - a plain-text page holding the decisions, certifications, testing plan and product links. Then act as my advisor: answer my follow-up questions strictly against that document, cite which section you are drawing on, and say plainly when a question falls outside it. Start with a five-bullet recap of the plan so I know you loaded it. If you cannot open the page, say so and I will paste the document instead.';
 function aiOpen(which){
   var base=which==='claude'?'https://claude.ai/new?q=':'https://chatgpt.com/?q=';
