@@ -317,6 +317,7 @@ header .wrap{position:relative;z-index:1}
 .figart{flex:0 0 auto;width:88px;height:88px;color:var(--pine3)}
 .figrow .figbody{flex:1 1 220px;min-width:0}
 .herofig{display:block;width:100%;max-width:250px;height:auto;color:var(--pine3);margin:0 0 10px}
+@media(max-width:640px){.herofig{max-width:120px;margin:0 0 4px}}
 @media(max-width:560px){.figart{width:64px;height:64px}}
 `;document.head.appendChild(s);})();
 
@@ -469,21 +470,21 @@ function aiCopy(btn){
 
 function renderSummary(root){
   var S=summaryDeck();
+  var aiBtns='<p style="display:flex;flex-wrap:wrap;gap:10px;margin:0 0 6px">'
+    +'<button class="present-launch" onclick="aiOpen(\'chatgpt\')">Open in ChatGPT &#8599;</button>'
+    +'<button class="present-launch" onclick="aiOpen(\'claude\')">Open in Claude &#8599;</button>'
+    +'<button class="present-launch" style="background:transparent;color:var(--pine);border:1px solid var(--pine)" onclick="aiCopy(this)">Copy the full research data</button>'
+    +'</p>';
   var h='<div class="slide">'
     +heroEmblem()
     +'<p class="eyebrow">Water Strategy Advisory &#183; July 2026</p>'
     +'<h2 class="h1s">The Bronner water advisory, in brief</h2>'
-    +'<p class="sub">What to buy now, and what waits for testing. Read straight through, or <button class="present-launch" onclick="startPresent()">present it section by section &#9654;</button></p>'
+    +'<p class="sub" style="margin-bottom:14px"><b>Have questions? Ask an AI.</b> One tap loads this entire research - decisions, certifications, testing plan, product links - into a chat so you can probe it, stress-test it, or plan from it.</p>'
+    +aiBtns
+    +'<p class="note" style="margin-bottom:18px">The chat buttons pre-load a prompt pointing at the hosted research summary; if the assistant cannot open links, use Copy and paste the data straight in.</p>'
+    +'<p class="sub" style="padding-top:16px;border-top:1px solid var(--line)">Or read it yourself: skim straight through, or <button class="present-launch" onclick="startPresent()">present it section by section &#9654;</button></p>'
     +'</div>';
   h+=S.map(function(s){return '<div class="slide"><p class="eyebrow">'+esc(s.eyebrow)+'</p><h2 class="h1s">'+esc(s.title)+'</h2>'+s.html+'</div>'}).join('');
-  h+='<div class="slide"><p class="eyebrow">Take it further</p><h2 class="h1s">Probe this research with an AI assistant</h2>'
-    +'<p class="sub">One click loads the complete research summary - the decisions, certifications, testing plan and product links - into a chat, so you can question it, stress-test it, or plan from it.</p>'
-    +'<p style="display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 6px">'
-    +'<button class="present-launch" onclick="aiOpen(\'chatgpt\')">Open in ChatGPT &#8599;</button>'
-    +'<button class="present-launch" onclick="aiOpen(\'claude\')">Open in Claude &#8599;</button>'
-    +'<button class="present-launch" style="background:transparent;color:var(--pine);border:1px solid var(--pine)" onclick="aiCopy(this)">Copy the full research data</button>'
-    +'</p>'
-    +'<p class="note">The chat buttons pre-load instructions pointing at the hosted research summary; if the assistant cannot open links, use Copy and paste the data straight into the conversation.</p></div>';
   root.innerHTML=h;
 }
 
