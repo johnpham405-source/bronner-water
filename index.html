@@ -612,6 +612,36 @@ function renderDrinking(root){
   h+=verdict('RO covers what a carbon block cannot, and the G3P800 is the most-certified in the field',
     'Against a strong carbon-block runner-up, RO wins on the dissolved contaminants a block cannot touch - copper (the tub-stain culprit), sodium, nitrate, TDS - and adds a membrane barrier for PFAS. Among RO systems, the Waterdrop G3P800 then wins on certification breadth plus a tankless, low-plastic build.','good');
 
+  /* certification stack-up: the pick vs every alternative */
+  var CERTROWS=[
+    {n:'Waterdrop G3P800',tag:['The pick','good'],cert:'IAPMO: NSF/ANSI 42, 53, 58, 372',pfas:'CERTIFIED Total PFAS to a 20 ppt endpoint, plus PFOA/PFOS/PFNA/PFHxS - the tightest certified claim in the field',pb:'Certified lead + copper (plus arsenic, nitrate, TDS)',line:'Most-certified system reviewed, and tankless'},
+    {n:'Multipure Aqualuxe',tag:['Runner-up','pine'],cert:'NSF: 42, 53, 401, P231',pfas:'Certified PFOA/PFOS at the older 70 ppt endpoint',pb:'Certified lead; no copper claim',line:'Exemplary carbon block - silent on copper, TDS, nitrate'},
+    {n:'Cloud RO',tag:['Premium alternative','info'],cert:'NSF/ANSI 58 (whole system, incl. its remineralizer)',pfas:'SGS lab-tested only - not a certified claim',pb:'SGS lab-tested only - not certified',line:'Best ownership experience; tank-based'},
+    {n:'Pentair FreshPoint GRO',tag:['Alternative','info'],cert:'IAPMO: NSF/ANSI 53 Total PFAS + 58',pfas:'Certified Total PFAS',pb:'Listing not re-checked here',line:'Certified RO from a major brand; tank-based'},
+    {n:'Culligan Aquasential Smart RO',tag:['Dealer white-glove','info'],cert:'WQA: NSF/ANSI 42, 53, 58, 372, 401',pfas:'Registry-certified PFAS',pb:'Certified (WQA listing)',line:'Same coverage class at 3-5x cost, with a service contract'},
+    {n:'Kinetico K5',tag:['Dealer white-glove','info'],cert:'WQA: NSF/ANSI 58',pfas:'Certified PFOA/PFOS',pb:'Listing not re-checked here',line:'Service-first dealer option'},
+    {n:'Waterdrop X12 / X16',tag:['Dropped','bad'],cert:'NSF/ANSI 42, 58, 372 - no 53',pfas:'NOT certified',pb:'NOT certified',line:'More flow and looks; the health claims are uncertified'},
+    {n:'Aquasana SmartFlow',tag:['Dropped','bad'],cert:'Certified, older scope',pfas:'Older 70 ppt PFOA/PFOS endpoint',pb:'Certified lead',line:'Plastic tank, 3.8-star owners - superseded by the pick'}
+  ];
+  h+='<p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin:18px 0 8px">How the certifications stack up</p>';
+  h+='<div class="scrollx"><table class="dtx"><tr><th>System</th><th>Registry certification</th><th>PFAS claim</th><th>Lead &amp; copper</th><th>Bottom line</th></tr>'
+    +CERTROWS.map(function(r){return '<tr><td><b>'+r.n+'</b><br>'+pill(r.tag[0],r.tag[1])+'</td><td>'+r.cert+'</td><td>'+r.pfas+'</td><td>'+r.pb+'</td><td style="color:var(--mut)">'+r.line+'</td></tr>'}).join('')
+    +'</table></div>';
+  h+='<p class="note">"Certified" means the exact model\'s claim was sighted in the certifier\'s own registry (NSF, WQA, or IAPMO). A lab report ("tested to", SGS) is evidence, not certification - it carries no ongoing audit. The G3P800\'s live IAPMO listing is re-checked the week of purchase.</p>';
+
+  h+=drawer('What each certification covers - and why it matters here',
+    '<div class="scrollx"><table class="dtx"><tr><th>Standard</th><th>What it certifies</th><th>Why it matters for this water</th></tr>'
+    +'<tr><td><b>NSF/ANSI 42</b></td><td>Aesthetics: chlorine taste and odor, particulates</td><td>Baseline comfort only - says nothing about health contaminants</td></tr>'
+    +'<tr><td><b>NSF/ANSI 53</b></td><td>Health contaminants: lead, PFAS, VOCs, cysts</td><td>The load-bearing standard here - the PFOS exceedance and lead both live under 53</td></tr>'
+    +'<tr><td><b>NSF/ANSI 58</b></td><td>Reverse-osmosis systems: TDS reduction plus whole-system material safety</td><td>The RO-specific standard; contaminant claims (PFAS, lead) can also be certified under it</td></tr>'
+    +'<tr><td><b>NSF/ANSI 372</b></td><td>Lead-free wetted materials</td><td>The hardware itself cannot leach lead into the water it treats</td></tr>'
+    +'<tr><td><b>NSF/ANSI 401</b></td><td>Emerging contaminants: pharmaceuticals, some pesticides</td><td>Breadth beyond the regulated list - useful, not decisive here</td></tr>'
+    +'<tr><td><b>NSF/ANSI 60</b></td><td>Chemicals and media ADDED to water (e.g. remineralization minerals)</td><td>None of the remineralizers compared holds it - why remin is treated as a taste preference, not a health claim</td></tr>'
+    +'<tr><td><b>NSF/ANSI 177</b></td><td>Shower filters - free chlorine only</td><td>No shower filter anywhere is certified for chloramine - why the outdoor shower answer is treating the line, not the shower head</td></tr>'
+    +'<tr><td><b>NSF P231</b></td><td>Microbiological purifiers (bacteria, viruses)</td><td>Relevant to the emergency gravity filter, not the city-water RO decision</td></tr>'
+    +'</table></div>'
+    +'<p class="note">No certification under any standard yet demonstrates PFAS reduction to the EPA\'s 4 ppt MCL - certified endpoints (20 ppt, 70 ppt) are floors, not measured ceilings; both membranes and carbon blocks test far below them in practice.</p>');
+
   h+=drawer('RO vs the carbon block - the 19-factor scorecard '+pill(tally.ro+' RO / '+tally.aql+' Aqualuxe / '+tally.tie+' tie','na'),
     (dd.pfasCertNote?'<p><b>One certification truth both sides share.</b> '+esc(dd.pfasCertNote)+'</p>':'')
     +'<div class="scrollx"><table class="dtx"><tr><th>Factor</th><th>Multipure Aqualuxe</th><th>Under-sink RO</th><th>Winner</th><th>Why it matters</th></tr>'
