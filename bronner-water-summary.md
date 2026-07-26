@@ -1,5 +1,5 @@
 # Bronner Residence Water Advisory — Research Summary
-**840 Crescent Beach Road, Vero Beach, FL 32963 · Updated July 9, 2026**
+**840 Crescent Beach Road, Vero Beach, FL 32963 · Updated July 26, 2026**
 
 This summary is designed to be loaded into Claude or ChatGPT for follow-up questions. It condenses the full interactive report (bronner-water-report.vercel.app). Every certification claim below was verified in the certifier's own database (NSF, WQA) in July 2026; "tested-to" is never called "certified."
 
@@ -36,6 +36,7 @@ This summary is designed to be loaded into Claude or ChatGPT for follow-up quest
 ## 2. What we know about the water (primary sources)
 
 - **PFOS ~9.9 ppt** (EPA UCMR5 monitoring) — about 2.5× the 4 ppt federal MCL *level*. This is a monitoring result, not a violation (MCL enforceable 2029, proposed extension 2031). It is the single strongest reason for certified drinking-tap treatment.
+- **PFOS vs PFAS:** PFAS is the family name (thousands of fluorinated "forever chemicals"); PFOS is one specific member — the compound detected at exceedance level here. A "Total PFAS" certification covers a defined multi-compound slice of the family, not all of it.
 - **Chloramine** disinfection: 2025 running annual average 3.13 ppm (range 1.0–4.0). Fluoridation ceased 6/30/2025.
 - **TTHMs**: compliance averages under the 80 ppb federal limit, but individual barrier-island samples have reached ~103 ppb — the case for whole-house catalytic carbon (a comfort/precaution layer, not the health priority).
 - **Lead & Copper Rule (June 2024 tap sampling, from the 2025 CCR)**: copper 90th percentile 0.337 mg/L (limit 1.3, zero site exceedances); lead 90th percentile 5.0 ppb (limit 15; one individual site hit 20 ppb; system passed).
