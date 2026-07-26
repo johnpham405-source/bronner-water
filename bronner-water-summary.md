@@ -8,7 +8,7 @@ This summary is designed to be loaded into Claude or ChatGPT for follow-up quest
 ## Product & test-kit links (all verified live, July 2026)
 
 **Order now — one per property unless noted:**
-- Waterdrop G3P800 RO (the pick): https://www.waterdropfilter.com/products/remineralization-reverse-osmosis-system-wd-g3p800 — also on Amazon Prime
+- Waterdrop G3P800 RO (the pick, BASE unit - not the remineralization bundle): https://www.waterdropfilter.com/products/tankless-reverse-osmosis-system-wd-g3p800-w-fc-1 — Amazon's listing is sold by Waterdrop's own storefront and has typically been well under the $999 direct list; confirm the seller reads "Waterdrop" and compare at checkout
 - Waterdrop PMT pressure tank (per fridge/ice line): https://www.waterdropfilter.com/products/small-water-pressure-tank-for-tankless-reverse-osmosis-wd-pmt
 - Advanced City Water Test (one per property): https://mytapscore.com/products/advanced-city-water-test
 - Lead & Copper Test (Lisa's bathtub only): https://mytapscore.com/products/lead-and-copper-water-test
@@ -46,7 +46,7 @@ This summary is designed to be loaded into Claude or ChatGPT for follow-up quest
 ## 3. The drinking-water decision: RO beats Aqualuxe for this house
 
 **Recommended drinking water system: certified under-sink reverse osmosis.**
-**Named pick: Waterdrop G3P800 (tankless), ~$450–600 + installation — run without its MNR35 remineralizer.** ([product page](https://www.waterdropfilter.com/products/remineralization-reverse-osmosis-system-wd-g3p800))
+**Named pick: Waterdrop G3P800 (tankless), ~$450–600 street via Waterdrop's Amazon storefront ($999 direct list) + installation — buy the base unit and run without the MNR35 remineralizer.** ([product page](https://www.waterdropfilter.com/products/tankless-reverse-osmosis-system-wd-g3p800-w-fc-1))
 **Premium design alternative: Cloud RO** (Wirecutter #1, design/app, best-documented remineralization — but tank-based, and its PFAS/lead are SGS-tested, not certified).
 
 Reasons:
