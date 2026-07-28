@@ -84,6 +84,7 @@ main{padding:10px 0 30px}
 .pill.bad{background:var(--badbg);color:var(--bad)}.pill.info{background:var(--infobg);color:var(--info)}
 .pill.na{background:var(--nabg);color:var(--na)}.pill.gold{background:var(--goldbg);color:var(--gold)}
 .pill.pine{background:var(--pine);color:#fff}
+.tabnew{display:inline-block;margin-left:6px;padding:1px 7px;font-size:9.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;background:var(--goldbg);color:var(--gold);vertical-align:2px}
 .chip{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:8px;border:1px solid var(--line);background:#fff;font-size:12px;font-weight:600;color:var(--info);text-decoration:none;margin:2px 4px 2px 0}
 .chip:hover{border-color:var(--info)}
 .chip.ev{color:var(--pine);background:var(--nabg)}
@@ -215,7 +216,7 @@ button:focus-visible,.chip:focus-visible,summary:focus-visible{outline:2.5px sol
     <button role="tab" data-tab="plan" aria-selected="false">The Plan</button>
     <button role="tab" data-tab="drinking" aria-selected="false">Drinking Water</button>
     <button role="tab" data-tab="house" aria-selected="false">House &amp; Testing</button>
-    <button role="tab" data-tab="bottled" aria-selected="false">Bottled Water</button>
+    <button role="tab" data-tab="bottled" aria-selected="false">Bottled Water<span class="tabnew">New</span></button>
     <button role="tab" data-tab="evidence" aria-selected="false">Evidence</button>
   </div>
 </nav>
@@ -460,6 +461,8 @@ function summaryDeck(){
 /* ===== AI export: open the research data in ChatGPT/Claude, or copy it ===== */
 var AI_SUMMARY_URL='https://bronner-water-report.vercel.app/research-summary';
 var AI_PROMPT='I am reviewing a completed water-quality advisory for three Florida properties (Vero Beach barrier island; City of Vero Beach supply with a PFOS exceedance and chloramine). Before answering anything, fetch and read the full research summary at '+AI_SUMMARY_URL+' - a plain-text page holding the decisions, certifications, testing plan and product links. Then act as my advisor: answer my follow-up questions strictly against that document, cite which section you are drawing on, and say plainly when a question falls outside it. Start with a five-bullet recap of the plan so I know you loaded it. If you cannot open the page, say so and I will paste the document instead.';
+var BW_AI_PROMPT='I am choosing bottled water for a Florida home, guided by a completed advisory. Before answering anything, fetch and read the bottled water section (section 12) of the research summary at '+AI_SUMMARY_URL+' - it covers the picks (Evian in glass first; Fiji for plastic cases; Icelandic Glacial when plastics documentation matters; Acqua Panna as backup glass), the evidence ladder behind them, storage rules for Florida heat, and the sources. Then act as my advisor: pressure-test the bottled water reasoning, answer my questions strictly against that document and the primary sources it links, and say plainly when a question falls outside it. Start with a three-bullet recap of the bottled water verdict so I know you loaded it. If you cannot open the page, say so and I will paste the section instead.';
+function bwAiOpen(){window.open('https://chatgpt.com/?q='+encodeURIComponent(BW_AI_PROMPT),'_blank','noopener')}
 function aiOpen(which){
   var base=which==='claude'?'https://claude.ai/new?q=':'https://chatgpt.com/?q=';
   window.open(base+encodeURIComponent(AI_PROMPT),'_blank','noopener');
@@ -1069,6 +1072,7 @@ function renderBottled(root){
   h+=sect('The verdict',esc(b.headline||''),es2(b.intro||''));
   if(b.pick)h+=verdict(esc(b.pick.t),esc(b.pick.d),'good');
   if(b.pickLinks)h+='<div style="display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 2px">'+(b.pickLinks||[]).map(function(l){return chip(l.t,l.u,'ev')}).join('')+'</div>';
+  h+='<p style="margin:12px 0 2px"><button class="present-launch" onclick="bwAiOpen()">Ask ChatGPT about this bottled water research &#8599;</button></p>';
   h+=lbl('What to buy, by situation');
   h+='<div class="cards2">'+(b.scenarios||[]).map(function(s){return '<div class="card"><div style="display:flex;gap:12px;align-items:flex-start">'+(s.img?pthumb(s.img,s.t):'')+'<div><h4>'+esc(s.t)+'</h4><p>'+esc(s.d)+'</p></div></div></div>'}).join('')+'</div>';
   if(b.scenarioNote)h+='<p class="note">'+esc(b.scenarioNote)+'</p>';
