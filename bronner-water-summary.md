@@ -1,5 +1,5 @@
 # Bronner Residence Water Advisory — Research Summary
-**840 Crescent Beach Road, Vero Beach, FL 32963 · Updated July 26, 2026**
+**840 Crescent Beach Road, Vero Beach, FL 32963 · Updated July 27, 2026**
 
 This summary is designed to be loaded into Claude or ChatGPT for follow-up questions. It condenses the full interactive report (bronner-water-report.vercel.app). Every certification claim below was verified in the certifier's own database (NSF, WQA) in July 2026; "tested-to" is never called "certified."
 
@@ -215,11 +215,32 @@ Likeliest driver: **months-long seasonal stagnation**, possibly amplified by chl
 
 Not a filter. It watches flow on the main, learns normal patterns, alerts and auto-closes on abnormal flow, and can be closed remotely. For a home vacant for months it is the highest-value device in the plan (~$600 valve vs five-figure flood remediation). Pair with $30–50 point leak sensors at: water heater, kitchen, fridge line, laundry, bathrooms, filtration equipment, mechanical room, outdoor shower plumbing if practical. Recommended: Flo by Moen.
 
-## 12. Evidence rules used throughout
+## 12. Bottled water — what third-party testing actually shows
+
+Bottled water's role in this plan: travel, guests, hurricane stock. The RO faucet stays the daily source. Every claim below is primary-sourced (peer review, government records, certifier registries); brand marketing counted for nothing.
+
+**The verdict: no bottled water is "tested free" of anything.** In the one peer-reviewed multi-brand study (Mason 2018: 259 bottles, 11 brands), **93% carried microplastics**, averaging 325 particles/L with a 31× brand spread (Nestlé Pure Life 930/L, Gerolsteiner 807/L worst; San Pellegrino 30/L best). Counting nanoplastics multiplies that by ~1,000 (Qian, PNAS 2024: ~240,000/L — contested in a published exchange; treat as order-of-magnitude). No brand holds a certified absence claim for microplastics, arsenic, or PFAS.
+
+**Regulatory reality:** the FDA arsenic limit equals EPA's (10 ppb, both since 2006), but FDA can't require certified labs or violation reporting for routine tests (GAO-09-861T), there is no Consumer Confidence Report equivalent (records stay at the plant), **there is no FDA PFAS limit at all** (rule due ~2028), and water exceeding a limit can legally be sold labeled "Contains Excessive [contaminant]." IBWA membership = annual audit, results never published. The two gates that count: **NY DOH certification** (annual recertification with full accredited-lab analyses; public facility list) and **NSF's bottled-water certification** (unannounced annual audits, public listing — few major brands enrolled).
+
+**Brand verdicts (primary-sourced):**
+- **Fiji** — strongest third-party stack: NSF-certified + NY DOH (I-115). Counterweight: voluntary Mar 2024 recall (~1.9M bottles, manganese + bacteria), FDA Class III (unlikely to cause harm), closed Nov 2024.
+- **Evian (I-011), Acqua Panna (I-090)** — pass the NY annual gate; no NSF listing.
+- **San Pellegrino** — lowest measured microplastics (30/L).
+- **Topo Chico** — highest PFAS in CR's 2020 testing (9.76 ppt; ~3.9 after filtration upgrade). Note: our tap's PFOS problem is 9.9 ppt — some bottled water is no escape.
+- **Avoid:** Starkey/Whole Foods (9.5–10.1 ppb arsenic across CR tests + 2016-17 recall), Peñafiel (18.1 ppb, withdrawn 2019; its own 2018 report had claimed non-detect), Crystal Geyser Alpine (2020 DOJ double-felony plea, $5M, over arsenic-laden filtration waste — confirming arsenic-bearing source water; probe was waste-handling, not finished water).
+- **Poland Spring** — "spring water" fraud claims proceeding (Dec 2024 ruling); labeling case, no contamination finding.
+- **Everything else** (Mountain Valley, Saratoga, Liquid Death, Essentia…) — no verifiable third-party data located. Brand-published reports are claims, not evidence.
+
+**Hurricane stockpile (measured evidence only):** PET is the reasonable default. A 35–45 °C garage sits below every measured harm threshold (lowest measured antimony exceedance: 65 °C held two weeks; 40 °C stayed clean through all 8 weeks measured). **Never store in a vehicle** — car interiors reach 60–70 °C, inside the measured danger range. Indoors beats garage directionally (heat + agitation raised nanoparticle release ~9× at 60 °C; thermal cycling drives release; sunlight is a bigger driver than heat and garages are dark). **Rotate every 6–12 months as prudence**, not demonstrated hazard — data stops at ~8 weeks. Skip the aluminum-can "upgrade": cans measure far higher in bisphenols than PET water, and nobody has heat-tested canned water. The dominant stockpile risks are volume (~28 gal for two adults × two weeks), seal breach, and container failure.
+
+**What no evidence supports:** any "tested free" claim; brand-published reports as proof; bottled-vs-tap microplastic superiority in either direction; safety or danger of months-long hot storage (unmeasured past ~8 weeks).
+
+## 13. Evidence rules used throughout
 
 1. EPA data → 2. City of Vero Beach CCR → 3. certifier databases (NSF/WQA/IAPMO — exact-model live listings only; "tested to" ≠ certified) → 4. peer-reviewed/extension → 5. manufacturer docs (always labeled) → 6. consumer apps/blogs/reviews/**Oasis Health** (secondary, non-authoritative; it carries no decision weight). Certifications are re-verified against live registries the week of purchase.
 
-## 13. Open questions
+## 14. Open questions
 
 Photo of the tub staining? One tub or several? Hot, cold, or both? Metallic taste? Stains at faucets/drains/grout/toilet tanks? Copper pipes confirmed? Any plumbing replaced? Outdoor shower on the house line? Before or after the future treatment point? Current outdoor filter brand (photo)? Treat outdoor shower as top priority (assumed yes)? Where do you want filtered water (kitchen faucet / dedicated faucet / fridge / ice — all)? Comfortable with under-sink RO for drinking only (assumed yes per the call)? **Is minimizing plastic contact more important than maximum contaminant removal? (the one answer that could flip the pick)** Dealer service plan attractive? Who collects samples at each house? Sam handles kit logistics?
 
