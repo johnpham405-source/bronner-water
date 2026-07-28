@@ -1,5 +1,5 @@
 # Bronner Residence Water Advisory — Research Summary
-**840 Crescent Beach Road, Vero Beach, FL 32963 · Updated July 27, 2026**
+**840 Crescent Beach Road, Vero Beach, FL 32963 · Updated July 28, 2026**
 
 This summary is designed to be loaded into Claude or ChatGPT for follow-up questions. It condenses the full interactive report (bronner-water-report.vercel.app). Every certification claim below was verified in the certifier's own database (NSF, WQA) in July 2026; "tested-to" is never called "certified."
 
@@ -217,24 +217,29 @@ Not a filter. It watches flow on the main, learns normal patterns, alerts and au
 
 ## 12. Bottled water — what third-party testing actually shows
 
-Bottled water's role in this plan: travel, guests, hurricane stock. The RO faucet stays the daily source. Every claim below is primary-sourced (peer review, government records, certifier registries); brand marketing counted for nothing.
+Bottled water's role: travel, guests, hurricane stock. The RO faucet stays the daily source. Every claim below is primary-sourced; this section was independently cross-audited (second AI research pass, July 27), which caught one error of ours (below) and added two brands.
 
-**The verdict: no bottled water is "tested free" of anything.** In the one peer-reviewed multi-brand study (Mason 2018: 259 bottles, 11 brands), **93% carried microplastics**, averaging 325 particles/L with a 31× brand spread (Nestlé Pure Life 930/L, Gerolsteiner 807/L worst; San Pellegrino 30/L best). Counting nanoplastics multiplies that by ~1,000 (Qian, PNAS 2024: ~240,000/L — contested in a published exchange; treat as order-of-magnitude). No brand holds a certified absence claim for microplastics, arsenic, or PFAS.
+**The verdict: no brand is "tested free" of anything.** Mason 2018 (259 bottles, 11 brands): **93% carried microplastics**, average 325 particles/L, 31× brand spread (Pure Life 930/L, Gerolsteiner 807/L worst; San Pellegrino 30/L best). Counting nanoplastics multiplies by ~1,000 (Qian, PNAS 2024: ~240,000/L — contested; order-of-magnitude only). What exists instead, for a few brands, is strong third-party documentation — and that is what the verdicts rank.
 
-**Regulatory reality:** the FDA arsenic limit equals EPA's (10 ppb, both since 2006), but FDA can't require certified labs or violation reporting for routine tests (GAO-09-861T), there is no Consumer Confidence Report equivalent (records stay at the plant), **there is no FDA PFAS limit at all** (rule due ~2028), and water exceeding a limit can legally be sold labeled "Contains Excessive [contaminant]." IBWA membership = annual audit, results never published. The two gates that count: **NY DOH certification** (annual recertification with full accredited-lab analyses; public facility list) and **NSF's bottled-water certification** (unannounced annual audits, public listing — few major brands enrolled).
+**Regulatory reality:** FDA arsenic limit = EPA's (10 ppb, since 2006), but FDA can't require certified labs or violation reporting (GAO-09-861T); no CCR equivalent; the federal testing floor is finished product **once a year** for chemical/physical/radiological, weekly coliform, source water yearly (21 CFR 129.80); **no FDA PFAS limit** (rule due ~2028); failed water can be sold labeled "Contains Excessive [contaminant]." Real gates: **NY DOH annual certification** and **NSF's bottled-water listing** (search by trade name — brands sit under corporate names; that's how our first Evian search missed it). Traps: "Certified Microplastic-Free" seals certify package materials, not tested water; IBWA audits are never published.
 
-**Brand verdicts (primary-sourced):**
-- **Fiji** — strongest third-party stack: NSF-certified + NY DOH (I-115). Counterweight: voluntary Mar 2024 recall (~1.9M bottles, manganese + bacteria), FDA Class III (unlikely to cause harm), closed Nov 2024.
-- **Evian (I-011), Acqua Panna (I-090)** — pass the NY annual gate; no NSF listing.
-- **San Pellegrino** — lowest measured microplastics (30/L).
-- **Topo Chico** — highest PFAS in CR's 2020 testing (9.76 ppt; ~3.9 after filtration upgrade). Note: our tap's PFOS problem is 9.9 ppt — some bottled water is no escape.
-- **Avoid:** Starkey/Whole Foods (9.5–10.1 ppb arsenic across CR tests + 2016-17 recall), Peñafiel (18.1 ppb, withdrawn 2019; its own 2018 report had claimed non-detect), Crystal Geyser Alpine (2020 DOJ double-felony plea, $5M, over arsenic-laden filtration waste — confirming arsenic-bearing source water; probe was waste-handling, not finished water).
-- **Poland Spring** — "spring water" fraud claims proceeding (Dec 2024 ruling); labeling case, no contamination finding.
-- **Everything else** (Mountain Valley, Saratoga, Liquid Death, Essentia…) — no verifiable third-party data located. Brand-published reports are claims, not evidence.
+**How brand documents are graded:** a brand summary sheet is a claim (Peñafiel's 2018 sheet said non-detect while its water measured ~18 ppb arsenic). A published **original third-party lab report** — named sample, lot, lab, methods, reporting limits — is checkable evidence. Two brands clear that bar.
 
-**Hurricane stockpile (measured evidence only):** PET is the reasonable default. A 35–45 °C garage sits below every measured harm threshold (lowest measured antimony exceedance: 65 °C held two weeks; 40 °C stayed clean through all 8 weeks measured). **Never store in a vehicle** — car interiors reach 60–70 °C, inside the measured danger range. Indoors beats garage directionally (heat + agitation raised nanoparticle release ~9× at 60 °C; thermal cycling drives release; sunlight is a bigger driver than heat and garages are dark). **Rotate every 6–12 months as prudence**, not demonstrated hazard — data stops at ~8 weeks. Skip the aluminum-can "upgrade": cans measure far higher in bisphenols than PET water, and nobody has heat-tested canned water. The dominant stockpile risks are volume (~28 gal for two adults × two weeks), seal breach, and container failure.
+**Brand verdicts (primary-sourced, updated after the cross-audit):**
+- **Evian (glass) — best-documented chemistry.** NSF-listed + NY-certified (I-011), and publishes the original NSF finished-lot report: 2025 still-water lot, PASS to 21 CFR 165.110, **arsenic ND at 1 ppb reporting limit, 18-compound EPA 537.1 PFAS panel ND at 2 ppt** (we read the report). Caveats: one annual lot ≠ every bottle; not an independently purchased retail sample; no package-specific plastics test; a received-before-sampled date quirk in the document.
+- **Icelandic Glacial (glass) — only package-specific plastics data.** NSF-listed; Eurofins Py-GC/MS on its glass and PET packages found all ten target polymers below quantification (we read the reports). Limits: brand-submitted samples, polymer mass not particle counts, 0.7 µm floor (nanoplastics invisible), chemistry report covered source water.
+- **Fiji (PET) — strongest PET option.** NSF + NY (I-115); 2025 brand sheet puts arsenic near 1 ppb (summary, not lab report); 2024 Class III recall on record, closed.
+- **Acqua Panna** (NY I-090), **San Pellegrino** (lowest measured microplastics, 30/L).
+- **Mountain Valley (glass)** — promising but undocumented: brand summary claims ND arsenic/PFAS; no original report, no NSF or NY listing located.
+- **Avoid:** Starkey (9.5–10.1 ppb arsenic + recall), Peñafiel (18.1 ppb, withdrawn), Crystal Geyser Alpine (DOJ double-felony over arsenic filtration waste). **Topo Chico** highest measured PFAS (9.76 → 3.9 ppt). **Poland Spring**: labeling fraud claims proceeding; no contamination finding. Saratoga, Liquid Death, Essentia, rest: no verifiable data.
 
-**What no evidence supports:** any "tested free" claim; brand-published reports as proof; bottled-vs-tap microplastic superiority in either direction; safety or danger of months-long hot storage (unmeasured past ~8 weeks).
+**Which bottle for which job:** travel/guests = Evian glass; plastics-documentation-first = Icelandic Glacial glass; PET cases (hurricane, coolers) = Fiji or any NY-certified brand; every day = the RO into glass or stainless.
+
+**Hurricane stockpile (measured evidence only):** PET is the reasonable default; a 35–45 °C garage sits below every measured harm threshold (lowest measured antimony exceedance: 65 °C for two weeks; 40 °C clean through all 8 weeks measured). **Never store in a vehicle** (60–70 °C = the measured danger range). Indoors beats garage directionally (heat + agitation raised nanoparticle release ~9×; cycling drives release; sunlight matters more than heat and garages are dark). Rotate 6–12 months as prudence, not demonstrated hazard. Skip the aluminum-can "upgrade" — cans measure far higher in bisphenols than PET water. Dominant risks: volume (~28 gal for two adults × two weeks), seal breach, container failure.
+
+**What no evidence supports:** any "tested free" claim; summary sheets as proof; one annual lot speaking for every bottle; bottled-vs-tap microplastic superiority either way; safety or danger of months-long hot storage. Where science is unsettled (glass vs plastic, the nanoplastics count), this report says so.
+
+**Correction logged:** our first registry sweep missed Evian's NSF listing (filed under Société Anonyme des Eaux Minérales d'Evian); the cross-audit caught it, we re-verified against the live registry, and Evian was upgraded. Registry searches must try corporate-name variants.
 
 ## 13. Evidence rules used throughout
 
