@@ -217,11 +217,11 @@ Not a filter. It watches flow on the main, learns normal patterns, alerts and au
 
 ## 12. Bottled water — the pick and why it won
 
-Bottled water's role: travel, guests, hurricane stock. The RO faucet stays the daily source. One rule decided the ranking: a brand's claim counts only if a third party's own document backs it. (Primary-sourced; independently cross-audited July 27 — the audit caught one error of ours, logged below.)
+Bottled water's role: travel, guests, and cases on hand. The RO faucet stays the daily source. One rule decided the ranking: a brand's claim counts only if a third party's own document backs it. (Primary-sourced; independently cross-audited July 27 — the audit caught one error of ours, logged below.)
 
 **The pick: Evian in glass.** Every brand says its water is clean; Evian is the only one that proves it the checkable way — it publishes the certifier's actual lab report on a named 2025 production lot: **arsenic ND at a 1 ppb reporting limit, 18-compound EPA 537.1 PFAS panel ND at 2 ppt**, tested by NSF (we read the report). Everyone else asks to be taken at their word.
 
-**What to buy, by situation:** travel/guests = Evian glass · PET cases (hurricane stock, coolers) = Fiji · plastics-documentation-first = Icelandic Glacial glass · every day = the RO faucet.
+**What to buy, by situation:** travel/guests = Evian glass · PET cases (coolers, cases on hand) = Fiji · plastics-documentation-first = Icelandic Glacial glass · every day = the RO faucet.
 
 **Four tests separate evidence from marketing, in rank order.** Most brands fail all four — that is the central finding.
 1. **They publish the lab report** (certifier's own document: named lot, lab, methods, limits) — *Evian only*
@@ -245,7 +245,9 @@ Columns are ranked left to right; Evian is the only brand that clears the first,
 
 **Regulatory gaps (why the label can't be trusted):** FDA's arsenic limit matches EPA's (10 ppb) but FDA can't require certified labs or violation reporting (GAO); no consumer report-card requirement; the federal testing floor is finished product once a year (21 CFR 129.80); **no FDA PFAS limit** (rule due ~2028); over-limit water may legally be sold labeled "Contains Excessive [contaminant]." "Certified Microplastic-Free" seals certify package materials, not tested water. NSF registry gotcha: brands list under corporate names (Evian under Société Anonyme des Eaux Minérales d'Evian).
 
-**Hurricane stockpile (corrected after second audit):** store PET cases **indoors by default** — the garage is short-term overflow, a vehicle is never. The measured heat ladder: 25 °C clean for three months; a 35–45 °C garage sits below the measured line but the margin is thin; **50 °C put antimony above the 6 ppb federal limit within 24 hours** (8.5 ppb; 16.8 by day 7 — Allafi 2020, read in full); 60–70 °C is a parked car. Rotate 6–12 months as prudence (measurement stops at ~8 weeks). Skip aluminum cans — bisphenols measure significantly higher in canned drinks than same-brand plastic/glass (Marchiandi 2024). Dominant real risks: volume (~28 gal for two adults × two weeks), seal breach, container failure.
+**Storing it (two rules for a Florida house):** keep cases **indoors** — a 2020 study measured antimony above the 6 ppb federal limit within 24 hours at 50 °C (8.5 ppb; 16.8 by day 7 — Allafi 2020, read in full), while 25 °C stayed clean for three months; a 35–45 °C garage sits below the measured line but the margin is thin. **Never leave water in a vehicle** (interiors reach 60–70 °C). Rotate 6–12 months as prudence (measurement stops at ~8 weeks). Skip aluminum cans — bisphenols measure significantly higher in canned drinks than same-brand plastic/glass (Marchiandi 2024).
+
+**Acronyms (plain English):** PET = the clear bottle plastic (polyethylene terephthalate) · RO = reverse osmosis · PFAS = the "forever chemicals" family; PFOS = the single PFAS compound elevated in this tap supply · ppb/ppt = parts per billion/trillion (1 ppb = 1,000 ppt) · ND = not detected at the stated reporting limit · MCL = enforceable legal limit · NSF = the ANSI-accredited certifier with public listings and unannounced audits · NY certified = New York DOH annual bottler recertification · FDA/EPA = bottled-water vs tap-water regulator · GAO = Congress's auditor · CFR = the federal rulebook · CCR = the utility annual report card (no bottled equivalent) · IBWA = industry trade group · Py-GC/MS = the polymer-mass lab method behind the plastics reports · LOQ = smallest reliably measurable amount · BPA = the can-lining chemical.
 
 **What no evidence supports:** any "tested free" claim; summary sheets as proof; one annual lot speaking for every bottle; bottled-vs-tap microplastic superiority either way; any verdict on hot storage beyond eight weeks. Where science is unsettled (glass vs plastic, the nanoplastics count), this report says so.
 
